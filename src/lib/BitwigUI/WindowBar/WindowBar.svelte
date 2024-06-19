@@ -8,7 +8,7 @@
     });
 </script>
 
-<div style="background-color: {themeValue["window"]["Panel body"]}; --button-background: {themeValue["window"]["Button background"]}; --button-gradient: {(themeValue["window"]["Button background"].length == 9 ? themeValue["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {themeValue["window"]["On"]};">
+<div style="background-color: {themeValue["window"]["Panel body"]}; --button-background: {themeValue["window"]["Button background"]}; --button-gradient: {(themeValue["window"]["Button background"].length == 9 ? themeValue["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {themeValue["window"]["On"]}; --rec: {themeValue["window"]["Record button color"]};">
     <span class="file-button">FILE</span>
     <span class="play-button-group">
         <span class="play-button">PLAY</span><i></i>
@@ -22,7 +22,7 @@
                 <rect width="11" height="11" fill="#ffffff" />
             </svg>
         </span><i></i>
-        <span class="play-button">
+        <span id="rec" class="play-button">
             <svg width="13" height="13">
                 <circle cx="6.5" cy="6.5" r="6.5" fill="#ffffff" />
             </svg>
@@ -56,6 +56,10 @@
     }
     #play:active {
         background-color: var(--on);
+        background-image: none;
+    }
+    #rec:active {
+        background-color: var(--rec);
         background-image: none;
     }
     .file-button {
