@@ -26,22 +26,24 @@
         default: themeValue[selected][value],
   
         components: {
-          preview: true,
+          preview: false,
           opacity: false,
           hue: true,
   
           interaction: {
-            hex: true,
+            hex: false,
             rgba: false,
             hsla: false,
             input: true,
-            save: true
+            save: false
           }
         }
       });
   
-      pickr.on("save", (color, instance) => {
+      pickr.on("change", (color, instance) => {
         const selectedColor = color.toHEXA().toString();
+
+        pickr.setColor(selectedColor);
 
         theme.update((_value) => {
             _value[selected][value] = selectedColor;
@@ -49,7 +51,6 @@
         });
 
         console.log("Selected color:", selectedColor);
-        pickr.hide();
       });
   
       return () => {
