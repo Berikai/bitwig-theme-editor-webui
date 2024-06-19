@@ -38,15 +38,16 @@
 <style>
     div {
         --side-margin: 5px;
+        --padding-left: 5px;
 
         display: flex;
         flex-direction: row;
         height: 45px;
-        width: calc(100% - calc(2 * var(--side-margin)));
+        width: calc(100% - calc(2 * var(--side-margin)) - var(--padding-left));
         border-radius: 5px;
         margin-left: var(--side-margin);
 
-        padding-left: 5px;
+        padding-left: var(--padding-left);
         
         opacity: 1; /* DEVELOPMENT ONLY */
     }
