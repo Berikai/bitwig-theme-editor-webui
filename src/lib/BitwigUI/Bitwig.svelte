@@ -34,5 +34,6 @@
         /*margin-top: max(var(--top-margin), calc(var(--top-margin) + (100vh - var(--height)) / 6)); /* Center vertically */
         width: var(--width);
         height: var(--height);
+        box-shadow: #202020 0px 0px 15px;
     }
 </style>
