@@ -14,6 +14,7 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
-    "@simonwep/pickr": "^1.9.1"
+    "@simonwep/pickr": "^1.9.1",
+    "gh-pages": "^6.1.1"
   }
 }
