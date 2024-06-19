@@ -41,6 +41,8 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
+
+    let modalState = false;
 </script>
 
 <nav>
@@ -51,7 +53,20 @@
         <button on:click={downloadJSON}><Save />Download</button>
     </span>
     <span>
-        <button>Bitwig Theme Editor</button>
+        <a href="https://github.com/berikai/bitwig-theme-editor-webui">Bitwig Theme Editor WebUI</a>
+    </span>
+    <span>
+        <button class="small-text" on:click={() => modalState = true}>How to apply themes to Bitwig Studio?</button>
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="modal" style={modalState ? "display: flex;" : "display:none;"} on:click={() => modalState = false}>
+            <div class="modal-box">
+                <h1>How to apply themes to Bitwig Studio?</h1>
+                <p>You can use Bitwig Theme Editor to apply themes.</p>
+                <a href="https://github.com/Berikai/bitwig-theme-editor">Go to Bitwig Theme Editor Repository</a>
+                <p class="note">Note: Please don't confuse it with <code>Bitwig Theme Editor WebUI</code>.</p>
+            </div>
+        </div>
     </span>
 </nav>
 
@@ -87,5 +102,58 @@
     }
     button:hover {
         background-color: #4f4f4f;
+    }
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: #2f2f2f;
+        border: none;
+        color: whitesmoke;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 4px 4px;
+        padding: 4px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    h1 {
+        margin: auto;
+        color: #010101;
+    }
+    code {
+        font-style: normal;
+        font-size: medium;
+        font-weight: bold;
+    }
+    .note {
+        font-style: italic;
+        font-size: smaller;
+    }
+    .modal {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+    .modal-box {
+        --topbar-height: 40px;
+        --modal-box-width: 460px;
+        position: relative;
+        top: calc(var(--topbar-height) + 20px);
+        left: calc(100vw - var(--modal-box-width) - 60px);
+        width: var(--modal-box-width);
+        height: 160px;
+        padding: 20px;
+        background-color: whitesmoke;
+        color: #020202;
+        border-bottom-left-radius: 25px;
+        border: 2px solid #020202;
+        box-shadow: #010101 0px 10px 25px;
     }
 </style>
