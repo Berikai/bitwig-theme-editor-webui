@@ -2,9 +2,19 @@
     import Reference from '../../assets/reference.png'
     import TopBar from './TopBar/TopBar.svelte';
     import WindowBar from './WindowBar/WindowBar.svelte';
+
+    import { theme } from "../Theme";
+
+    let themeValue;
+
+    theme.subscribe((_value) => {
+        themeValue = _value;
+    });
+
+    const showReference = 0;
 </script>
 
-<div style="background-image: url({Reference});">
+<div id="bitwig" style="{showReference ? `background-image: url(${Reference});` : ""} background-color: {themeValue["window"]["Window background"]};">
     <TopBar />
     <WindowBar />
 </div>
@@ -15,6 +25,8 @@
         --height: 768px;
         --top-margin: 50px;
 
+        cursor: default;
+
         display: flex;
         flex-direction: column;
         min-width: var(--width);
@@ -22,6 +34,5 @@
         /*margin-top: max(var(--top-margin), calc(var(--top-margin) + (100vh - var(--height)) / 6)); /* Center vertically */
         width: var(--width);
         height: var(--height);
-        background-color: #2e2e2e;
     }
 </style>
