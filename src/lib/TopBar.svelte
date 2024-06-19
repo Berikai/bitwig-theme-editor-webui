@@ -86,6 +86,7 @@
         flex-direction: row;
         margin-left: 10px;
         margin-right: 10px;
+        white-space: nowrap;
     }
     button {
         display: flex;
