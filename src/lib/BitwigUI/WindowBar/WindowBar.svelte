@@ -9,15 +9,15 @@
 </script>
 
 <div style="background-color: {themeValue["window"]["Panel body"]}; --button-background: {themeValue["window"]["Button background"]}; --button-gradient: {(themeValue["window"]["Button background"].length == 9 ? themeValue["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {themeValue["window"]["On"]}; --rec: {themeValue["window"]["Record button color"]};">
-    <span class="file-button">FILE</span>
+    <span class="normal-button button-active">FILE</span>
     <span class="play-button-group">
-        <span class="play-button">PLAY</span><i></i>
+        <span class="play-button button-active">PLAY</span><i></i>
         <span id="play" class="play-button">
             <svg width="24" fill="#ffffff" viewBox="0 0 24 24">
                 <path stroke-width="1.5" d="M18.25 12L5.75 5.75V18.25L18.25 12Z"></path>
             </svg>
         </span><i></i>
-        <span class="play-button">
+        <span class="play-button button-active">
             <svg width="11" height="11">
                 <rect width="11" height="11" fill="#ffffff" />
             </svg>
@@ -31,8 +31,8 @@
     <span class="hitech-group" style="">
 
     </span>
-    <span class="file-button">ADD</span>
-    <span class="file-button">EDIT</span>
+    <span class="normal-button button-active">ADD</span>
+    <span class="normal-button button-active">EDIT</span>
 </div>
 
 <style>
@@ -62,7 +62,7 @@
         background-color: var(--rec);
         background-image: none;
     }
-    .file-button {
+    .normal-button {
         width: 39px;
         height: 35px;
         background-image: linear-gradient(var(--button-gradient), var(--button-background));
@@ -78,6 +78,9 @@
 
         border: 1px solid #2f2f2f;
         border-radius: 3px;
+    }
+    .button-active:active {
+        filter: brightness(0.8);
     }
     .play-button {
         width: 39px;
@@ -113,11 +116,10 @@
         margin-top: 3px;
 
         display: flex;
-        justify-content: center;
-        align-items: center;
 
         background-color: #1f1f1f;
 
         border-radius: 4px;
+        overflow: hidden;
     }
 </style>
