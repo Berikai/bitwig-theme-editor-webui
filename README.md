@@ -6,6 +6,8 @@
 
 This is a WebUI for [Bitwig Theme Editor](https://github.com/berikai/bitwig-theme-editor) to create theme files visually, written with [Svelte](https://svelte.dev).
 
+You can click [here](https://berikai.github.io/bitwig-theme-editor-webui/) to test it live in its current state.
+
 ## Run Locally
 
 > You need [NodeJS](https://nodejs.org) installed on your computer!
