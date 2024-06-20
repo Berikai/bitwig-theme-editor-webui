@@ -1,7 +1,7 @@
 <script>
     import Content from "./lib/Content.svelte";
-    import Sidebar from "./lib/SideBar.svelte";
-    import Topbar from "./lib/TopBar.svelte";
+    import Sidebar from "./lib/SideBar/SideBar.svelte";
+    import Topbar from "./lib/TopBar/TopBar.svelte";
 </script>
 
 <main>
@@ -17,6 +17,8 @@
         display: flex;
         flex-direction: column;
         height: 100vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     div {
         --topbar-height: 40px;
