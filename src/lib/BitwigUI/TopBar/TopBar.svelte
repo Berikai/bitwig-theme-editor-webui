@@ -20,6 +20,6 @@
         width: 100%;
         z-index: 1;
 
-        /*opacity: 0.7; /* DEVELOPMENT ONLY */
+        opacity: 1; /* Set to 1 in production */
     }
 </style>
