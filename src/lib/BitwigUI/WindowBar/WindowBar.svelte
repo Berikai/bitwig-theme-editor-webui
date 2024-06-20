@@ -49,7 +49,7 @@
 
         padding-left: var(--padding-left);
         
-        opacity: 1; /* Set to 1 in production */
+        opacity: 1; /* Development only, set to 1 in production */
     }
     i {
         border-right: 1px solid #2f2f2f;

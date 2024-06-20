@@ -138,7 +138,7 @@
         flex-direction: row;
         justify-content: space-between;
         height: 34px;
-        opacity: 1; /* Set to 1 in production */
+        opacity: 1; /* Development only, set to 1 in production */
     }
     aside {
         display: flex;
