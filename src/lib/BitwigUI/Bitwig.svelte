@@ -59,7 +59,6 @@
         height: 655px;
         display: flex;
         flex-direction: row;
-        background-color: #00ff00;
 
         margin-top: 3px;
         margin-bottom: 2px;
