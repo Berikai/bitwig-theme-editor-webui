@@ -8,7 +8,7 @@
     });
 </script>
 
-<div style="background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
+<div style="--button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
     <span class="normal-button button-active">FILE</span>
     <span class="play-button-group">
         <span class="play-button button-active">PLAY</span><i></i>
@@ -76,7 +76,7 @@
         justify-content: center;
         align-items: center;
 
-        border: 1px solid #2f2f2f;
+        border: 1px solid var(--button-stroke);
         border-radius: 3px;
     }
     .button-active:active {
@@ -102,8 +102,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-        border: 1px solid #2f2f2f;
+        border: 1px solid var(--button-stroke);
         border-radius: 3px;
         overflow: hidden;
     }

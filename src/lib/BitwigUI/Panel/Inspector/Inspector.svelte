@@ -8,10 +8,14 @@
     });
 </script>
 
-<div>
+<div style="--button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
     <span class="title">INSTRUMENT TRACK</span>
     <span class="sub-title">Inst 1</span>
-    <span class="color-palette"></span>
+    <span class="color-palette">
+        <span class="color" style="background-color: #2c2c2c;"/><span class="color" style="background-color: #7a7a7a;"/><span class="color" style="background-color: #c9c9c9;"/><span class="color" style="background-color: #8689ac;"/><span class="color" style="background-color: #a37943;"/><span class="color" style="background-color: #c69f70;"/><span class="color" style="background-color: #5761c6;"/><span class="color" style="background-color: #848ae0;"/><span class="color" style="background-color: #9549cb;"/>
+        <span class="color" style="background-color: #d93871;"/><span class="color" style="background-color: #d92e24;"/><span class="color" style="background-color: #ff5706;"/><span class="color" style="background-color: #d99d10;"/><span class="color" style="background-color: #739814;"/><span class="color" style="background-color: #009d17;"/><span class="color" style="background-color: #00a694;"/><span class="color" style="background-color: #0099d9;"/><span class="color" style="background-color: #bc76b0;"/>
+        <span class="color" style="background-color: #e16691;"/><span class="color" style="background-color: #ec6157;"/><span class="color" style="background-color: #ff833e;"/><span class="color" style="background-color: #e4b74e;"/><span class="color" style="background-color: #a0c04c;"/><span class="color" style="background-color: #3ebb62;"/><span class="color" style="background-color: #43d2b9;"/><span class="color" style="background-color: #44c8ff;"/><span class="color" style="background-color: #d1b9db;"/>
+    </span>
     <span class="comment">Comment</span>
     <span class="active-area">
         <svg width="25px" height="25px">
@@ -19,7 +23,26 @@
         </svg>
         Active
     </span>
-    <span class="channel-area"></span>
+    <span class="channel-area" style="background-color: {theme["window"]["Panel body"]};">
+        <span class="channel-row">
+            Channel
+            <span class="channel-all-button">All</span>
+            <svg class="arrow-right" width="6px" height="6px" viewBox="0 0 12 12">
+                <polygon points="0,0 10,5 0,10" fill="white" />
+            </svg>
+            <span class="channel-all-button">1</span>
+        </span>
+        <span class="bend-row">
+            P. Bend
+            <span class="channel-on-button" style="background-color: {theme["window"]["On"]};">
+                →Expr.
+                <span class="channel-on-right" style="color: {theme["window"]["On"]};"> <code>2</code><code>2</code></span>
+            </span>
+        </span>
+    </span>
+    <span class="device-area"></span>
+    <span class="send-area"></span>
+    <span class="mixer-area"></span>
 </div>
 
 <style>
@@ -31,7 +54,7 @@
         height: calc(100% - 2 * var(--border-width));
         background-color: brown;
         border-radius: 3px;
-        border: 2px solid black;
+        border: 2px solid var(--panel-body);
         overflow: hidden;
     }
     span {
@@ -39,7 +62,7 @@
     }
     .title {
         height: 18px;
-        background-color: #2f2f2f;
+        background-color: var(--panel-body);
         font-size: 11px;
         display: flex;
         text-align: center;
@@ -55,18 +78,29 @@
         padding-top: 3px;
         padding-left: 3px;
         font-style: italic;
-        border-bottom: 2px solid #2f2f2f;
+        border-bottom: 2px solid var(--panel-body);
     }
     .color-palette {
-        height: 53px;
-        border-bottom: 2px solid #2f2f2f;
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-left: 2px;
+        height: 52px;
+        width: 156px;
+        border-bottom: 2px solid var(--panel-body);
         background-color: black;
     }
+    .color {
+        width: 15px;
+        height: 15px;
+        margin-right: 2px;
+        margin-bottom: 2px;
+    }
     .comment {
-        height: 103px;
-        border-bottom: 2px solid #2f2f2f;
+        height: 102px;
+        border-bottom: 2px solid var(--panel-body);
         background-color: black;
-        padding-top: 2px;
         padding-left: 3px;
         font-size: 10px;
         font-style: italic;
@@ -80,12 +114,86 @@
         padding-left: 1px;
         font-size: 12px;
         background-color: black;
-        border-bottom: 2px solid #2f2f2f;
+        border-bottom: 2px solid var(--panel-body);
     }
     .channel-area {
         display: flex;
+        flex-direction: column;
         height: 53px;
+        border-bottom: 2px solid var(--panel-body);
+    }
+    .channel-row {
+        display: flex;
+        align-items: center;
+        padding-left: 4px;
+        height: 26px;
+        font-size: 11px;
+    }
+    .channel-all-button {
+        display: flex;
+        align-items: center;
+        padding-left: 4px;
+        margin-left: 2px;
+        height: 18px;
+        width: 40px;
+        font-size: 11px;
+        border: 1px solid var(--button-stroke);
+        border-radius: 3px;
+        background-image: linear-gradient(var(--button-gradient), var(--button-background));
+    }
+    .channel-on-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 6px;
+        margin-left: 5px;
+        height: 22px;
+        width: 102px;
+        font-size: 11px;
+        border-radius: 3px;
+        color: black;
+        overflow: hidden;
+    }
+    .channel-on-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 6px;
+        margin-left: 5px;
+        width: 100%;
+        height: 100%;
+        font-size: 11px;
+        background-color: rgb(39, 39, 39);
+        overflow: hidden;
+    }
+    .arrow-right {
+        margin-left: 3px;
+        margin-right: 2px;
+    }
+    .bend-row {
+        display: flex;
+        align-items: center;
+        padding-left: 4px;
+        height: 26px;
+        font-size: 11px;
+    }
+    .device-area {
+        display: flex;
+        height: 153px;
         background-color: #6f6f6f;
-        border-bottom: 2px solid #2f2f2f;
+        border-bottom: 2px solid var(--panel-body);
+    }
+    .send-area {
+        display: flex;
+        height: 51px;
+        background-color: #6f6f6f;
+        border-bottom: 2px solid var(--panel-body);
+    }
+    .mixer-area {
+        display: flex;
+        flex-direction: row;
+        height: 155px;
+        background-color: #6f6f6f;
     }
 </style>
