@@ -15,7 +15,6 @@
     ThemeStore.subscribe((_value) => {
         theme = _value;
         if (pickr != null && pickr != undefined && pickr.getColor() != null && pickr.getColor().toHEXA() != theme[selected][value] && theme != undefined && theme[selected] != undefined && theme[selected][value] != undefined){
-            console.log(theme[selected][value])
             pickr.setColor(theme[selected][value]);
         }
     });
