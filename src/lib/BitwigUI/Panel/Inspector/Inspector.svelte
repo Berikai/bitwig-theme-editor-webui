@@ -51,7 +51,9 @@
         <span class="send-button">Master</span>
     </span>
     <span class="mixer-area">
-        <span class="mixer-half" style="background-color: var(--hole-light);"></span>
+        <span class="mixer-half" style="background-color: var(--hole-light);">
+            Sends
+        </span>
         <span class="mixer-half">
             <span class="mixer-button">
                 <span class="mixer-button-r">
@@ -267,6 +269,7 @@
         margin-right: 2px;
         width: 78px;
         height: 100%;
+        font-size: 12px;
     }
     .mixer-button {
         display: flex;
