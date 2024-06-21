@@ -257,4 +257,4 @@ export const default_theme = {
 
 let current_theme = structuredClone(default_theme);
 
-export let theme = writable(current_theme);
+export let ThemeStore = writable(current_theme);
