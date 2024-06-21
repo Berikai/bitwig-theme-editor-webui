@@ -1,5 +1,13 @@
 <script>
+    import { onMount } from "svelte";
     import { ThemeStore } from "../../Theme";
+    import { scrollToValue } from "../../scrollToValue";
+
+    onMount(() => {
+        document.getElementById("bottom_bar").addEventListener("mousedown", (e) => {
+            scrollToValue(e, "Window background")
+        });
+    });
 
     let theme;
 
@@ -8,7 +16,7 @@
     });
 </script>
 
-<div>
+<div id="bottom_bar">
     <aside>
         <span class="inspector">
             <svg width="19px" height="19px" viewBox="0 0 19 19" fill={theme["window"]["On"]} style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">

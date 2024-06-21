@@ -1,6 +1,40 @@
 <script>
+    import { onMount } from "svelte";
     import { ThemeStore } from "../../Theme";
+    import { scrollToValue } from '../../scrollToValue';
 
+    onMount(() => {
+        document.getElementById("panel").addEventListener("mousedown", (e) => {
+            scrollToValue(e, "Panel body")
+        });
+
+        Array.from(document.getElementsByClassName("play-button")).forEach((element) => {
+            if (element.id == "rec") {
+                element.addEventListener("mousedown", (e) => {
+                    scrollToValue(e, "Record button color")
+                });
+                return;
+            }
+
+            if (element.id == "play") {
+                element.addEventListener("mousedown", (e) => {
+                    scrollToValue(e, "On")
+                });
+                return;
+            }
+
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Button background")
+            });
+        });
+
+        Array.from(document.getElementsByClassName("normal-button")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Button background")
+            });
+        });
+    });
+    
     let theme;
 
     ThemeStore.subscribe((_value) => {
@@ -8,7 +42,7 @@
     });
 </script>
 
-<div style="--button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
+<div id="panel" style="--button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
     <span class="normal-button button-active">FILE</span>
     <span class="play-button-group">
         <span class="play-button button-active">PLAY</span><i></i>

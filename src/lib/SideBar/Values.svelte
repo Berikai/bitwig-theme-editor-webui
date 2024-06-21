@@ -57,7 +57,7 @@
         <button on:click={() => selected = "arranger"} style={selected == "arranger" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Arranger</button>
     </nav>
     <span>Values</span>
-    <input type="text" placeholder="Search color values" bind:value={searchValue} />
+    <input id="search_bar" type="text" placeholder="Search color values" bind:value={searchValue} />
     <section id="window" style={selected != "window" ? "display: none;" : ""}>
         {#each Object.keys(theme["window"]) as value (value)}
             <Value value={value} selected={"window"}/>
