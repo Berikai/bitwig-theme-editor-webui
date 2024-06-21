@@ -5,6 +5,9 @@
 
     scaling.subscribe((value) => {
         scale = value;
+        const scaleEl = document.getElementById("scale");
+        if (scaleEl != undefined)
+            scaleEl.innerText = `${scale}%`;
     });
 
     const increase = () => {
@@ -32,7 +35,7 @@
 
 <div>
     <button id="decrease" on:click={decrease}>-</button>
-    <i>{scale}%</i>
+    <i id="scale">{scale}%</i>
     <button id="increase" on:click={increase}>+</button>
 </div>
 
