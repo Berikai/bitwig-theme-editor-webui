@@ -8,7 +8,7 @@
     });
 </script>
 
-<div style="--button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
+<div style="--rec: {theme["window"]["Record button color"]}; --display-background: {theme["window"]["Display Background"]}; --hole-light: {theme["window"]["Hole (light)"]}; --hole-medium: {theme["window"]["Hole (medium)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
     <span class="title">INSTRUMENT TRACK</span>
     <span class="sub-title">Inst 1</span>
     <span class="color-palette">
@@ -23,7 +23,7 @@
         </svg>
         Active
     </span>
-    <span class="channel-area" style="background-color: {theme["window"]["Panel body"]};">
+    <span class="channel-area">
         <span class="channel-row">
             Channel
             <span class="channel-all-button">All</span>
@@ -40,9 +40,38 @@
             </span>
         </span>
     </span>
-    <span class="device-area"></span>
-    <span class="send-area"></span>
-    <span class="mixer-area"></span>
+    <span class="device-area">
+        <span class="device-nav">
+            <span class="device-button"></span>
+        </span>
+        <span class="device-in"></span>
+    </span>
+    <span class="send-area">
+        <span class="send-button">All ins</span>
+        <span class="send-button">Master</span>
+    </span>
+    <span class="mixer-area">
+        <span class="mixer-half" style="background-color: var(--hole-light);"></span>
+        <span class="mixer-half">
+            <span class="mixer-button">
+                <span class="mixer-button-r">
+                    <svg class="circle" width="10px" height="10px">
+                        <circle cx="5" cy="5" r="5" fill="black" />
+                    </svg>
+                </span>
+                <span class="mixer-button-n">S</span>
+                <span class="mixer-button-n">M</span>
+            </span>
+            <span class="mixer-volume">
+                <svg width="2px" height="100%">
+                    <line x1="1" y1="2px" x2="1" y2="20px" stroke="{theme["window"]["On"]}" />
+                </svg>
+            </span>
+            <span class="mixer-limiter">
+
+            </span>
+        </span>
+    </span>
 </div>
 
 <style>
@@ -52,10 +81,10 @@
         flex-direction: column;
         width: calc(161px - 2 * var(--border-width));
         height: calc(100% - 2 * var(--border-width));
-        background-color: brown;
         border-radius: 3px;
         border: 2px solid var(--panel-body);
         overflow: hidden;
+        background-color: var(--panel-body);
     }
     span {
         width: 100%;
@@ -71,7 +100,7 @@
     }
     .sub-title {
         height: 18px;
-        background-color: rgb(32, 32, 32);
+        background-color: var(--display-background);
         font-size: 11px;
         display: flex;
         text-align: center;
@@ -89,7 +118,7 @@
         height: 52px;
         width: 156px;
         border-bottom: 2px solid var(--panel-body);
-        background-color: black;
+        background-color: var(--display-background);
     }
     .color {
         width: 15px;
@@ -100,7 +129,7 @@
     .comment {
         height: 102px;
         border-bottom: 2px solid var(--panel-body);
-        background-color: black;
+        background-color: var(--display-background);
         padding-left: 3px;
         font-size: 10px;
         font-style: italic;
@@ -113,14 +142,16 @@
         padding-top: 2px;
         padding-left: 1px;
         font-size: 12px;
-        background-color: black;
+        background-color: var(--hole-light);
         border-bottom: 2px solid var(--panel-body);
     }
     .channel-area {
         display: flex;
         flex-direction: column;
         height: 53px;
+        background-color: var(--hole-light);
         border-bottom: 2px solid var(--panel-body);
+
     }
     .channel-row {
         display: flex;
@@ -180,20 +211,111 @@
     }
     .device-area {
         display: flex;
+        flex-direction: column;
         height: 153px;
-        background-color: #6f6f6f;
         border-bottom: 2px solid var(--panel-body);
+    }
+    .device-nav {
+        display: flex;
+        width: 100%;
+        height: 26px;
+        background-color: var(--hole-light);
+        border-bottom: 2px solid var(--hole-medium);
+    }
+    .device-in {
+        display: flex;
+        height: 100%;
+        background-color: var(--hole-medium);
+    }
+    .device-button {
+        display: flex;
+        width: 25%;
+        height: 26px;
+        background-color: var(--hole-medium);
+        border-bottom: 2px solid var(--hole-medium);
     }
     .send-area {
         display: flex;
+        flex-direction: column;
         height: 51px;
-        background-color: #6f6f6f;
+        background-color: var(--hole-light);
         border-bottom: 2px solid var(--panel-body);
+    }
+    .send-button {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        width: 128px;
+        margin-top: 2px;
+        margin-left: 3px;
+        padding-left: 20px;
+        background-image: linear-gradient(var(--button-gradient), var(--button-background));
+        border: 1px solid var(--button-stroke);
+        border-radius: 5px;
+        font-size: 11px;
     }
     .mixer-area {
         display: flex;
         flex-direction: row;
         height: 155px;
-        background-color: #6f6f6f;
+        background-color: var(--panel-body);
+    }
+    .mixer-half {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-right: 2px;
+        width: 78px;
+        height: 100%;
+    }
+    .mixer-button {
+        display: flex;
+        width: 76px;
+        height: 20px;
+        margin-left: 2px;
+        border: 1px solid var(--button-stroke);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .mixer-button-n {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: bolder;
+        background-image: linear-gradient(var(--button-gradient), var(--button-background));
+        border-left: 1px solid var(--button-stroke);
+    }
+    .mixer-button-r {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: bolder;
+        background-color: var(--rec);
+    }
+    .mixer-volume {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 78px;
+        height: 24px;
+        margin-top: 3px;
+        margin-left: 2px;
+        background-color: var(--hole-medium);
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    .mixer-limiter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 78px;
+        height: 118px;
+        margin-top: 3px;
+        margin-left: 2px;
+        background-color: var(--hole-medium);
+        border-radius: 3px;
+        overflow: hidden;
     }
 </style>
