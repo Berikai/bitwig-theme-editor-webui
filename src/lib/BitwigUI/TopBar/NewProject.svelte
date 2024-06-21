@@ -1,9 +1,9 @@
 <div>
-    <svg width="6" height="6">
+    <svg width="6" height="6" viewBox="0 0 6 6">
         <rect width="10" height="10" fill="#c3c3c3" />
     </svg>
     <span>New 1*</span>
-    <svg width="7" height="7">
+    <svg width="7" height="7" viewBox="0 0 7 7">
         <line x1="0" y1="0" x2="7" y2="7" stroke="#c3c3c3" />
         <line x1="0" y1="7" x2="7" y2="0" stroke="#c3c3c3" />
     </svg>

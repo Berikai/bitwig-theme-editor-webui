@@ -2,36 +2,42 @@
     export let value;
     export let selected;
 
-    import { theme } from "../Theme";
+    import { ThemeStore } from "../Theme";
+    import ThemeInfo from "../ThemeInfo";
     import ColorPicker from "./ColorPicker.svelte";
 
-    let themeValue;
+    let theme;
 
-    theme.subscribe((_value) => {
-        themeValue = _value;
+    ThemeStore.subscribe((_value) => {
+        theme = _value;
     });
 </script>
 
 <div>
     <section>
-        <span>{value}</span>
-        <code style={`background-color: ${themeValue[selected][value]};`} hidden></code>
-        <i><ColorPicker value={value} selected={selected} /></i>
+        <span id={value}>{value}</span>
+        <span class="info">{ThemeInfo[selected][value]}</span>
     </section>
+    <code style={`background-color: ${theme[selected][value]};`} hidden></code>
+    <i><ColorPicker value={value} selected={selected} /></i>
 </div>
 
 <style>
     div {
         display: flex;
-        height: 50px;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 40px;
         color: black;
         background-color: whitesmoke;
         border-bottom: 1px solid #a5a5a5;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     section {
         display: flex;
-        align-items: center;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         width: 100%;
     }
@@ -41,6 +47,10 @@
     span {
         margin-left: 10px;
         margin-right: 10px;
+    }
+    span.info {
+        font-size: 12px;
+        color: gray;
     }
     code {
         margin-right: 30px;

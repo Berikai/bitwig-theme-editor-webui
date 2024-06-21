@@ -6,16 +6,16 @@
     import Pickr from "@simonwep/pickr";
     import "@simonwep/pickr/dist/themes/monolith.min.css";
 
-    import { theme } from "../Theme";
+    import { ThemeStore } from "../Theme";
   
     let pickr;
   
-    let themeValue;
+    let theme;
 
-    theme.subscribe((_value) => {
-        themeValue = _value;
-        if (pickr != undefined && pickr.getColor().toHEXA() != themeValue[selected][value]){
-            pickr.setColor(themeValue[selected][value]);
+    ThemeStore.subscribe((_value) => {
+        theme = _value;
+        if (pickr != undefined && pickr.getColor().toHEXA() != theme[selected][value]){
+            pickr.setColor(theme[selected][value]);
         }
     });
 
@@ -23,7 +23,7 @@
         pickr = Pickr.create({
             el: ".color-picker",
             theme: "monolith", // 'classic', 'monolith', 'nano'
-            default: themeValue[selected][value],
+            default: theme[selected][value],
       
             components: {
               preview: false,
@@ -45,7 +45,7 @@
 
             pickr.setColor(selectedColor);
 
-            theme.update((_value) => {
+            ThemeStore.update((_value) => {
                 _value[selected][value] = selectedColor;
                 return _value;
             });

@@ -3,16 +3,16 @@
     import Load from "./LoadIcon.svelte";
     import Save from "./SaveIcon.svelte";
 
-    import { default_theme, theme } from "../Theme";
+    import { default_theme, ThemeStore } from "../Theme";
 
-    let themeValue;
+    let theme;
 
-    theme.subscribe((_value) => {
-        themeValue = _value;
+    ThemeStore.subscribe((_value) => {
+        theme = _value;
     });
 
     const setDefault = () => {
-        theme.set(structuredClone(default_theme))
+        ThemeStore.set(structuredClone(default_theme))
     }
 
     const changeTheme = () => {
@@ -23,12 +23,12 @@
 
     $: if (files) {
         files[0].text().then((text) => {
-            theme.set(structuredClone(JSON.parse(text)));
+            ThemeStore.set(structuredClone(JSON.parse(text)));
         });
     }
 
     function downloadJSON() {
-        const dataStr = JSON.stringify(themeValue, null, 2);
+        const dataStr = JSON.stringify(theme, null, 2);
         const blob = new Blob([dataStr], { type: "application/json" });
         const url = URL.createObjectURL(blob);
 
@@ -53,7 +53,7 @@
         <button on:click={downloadJSON}><Save />Download</button>
     </span>
     <span>
-        <a href="https://github.com/berikai/bitwig-theme-editor-webui">Bitwig Theme Editor WebUI</a>
+        <a target=”_blank” href="https://github.com/berikai/bitwig-theme-editor-webui" style="white-space: nowrap;">Bitwig Theme Editor WebUI</a>
     </span>
     <span>
         <button class="small-text" on:click={() => modalState = true}>How to apply themes to Bitwig Studio?</button>
@@ -63,7 +63,7 @@
             <div class="modal-box">
                 <h1>How to apply themes to Bitwig Studio?</h1>
                 <p>You can use Bitwig Theme Editor to apply themes.</p>
-                <a href="https://github.com/Berikai/bitwig-theme-editor">Go to Bitwig Theme Editor Repository</a>
+                <a target=”_blank” href="https://github.com/Berikai/bitwig-theme-editor">Go to Bitwig Theme Editor Repository</a>
                 <p class="note">Note: Please don't confuse it with <code>Bitwig Theme Editor WebUI</code>.</p>
             </div>
         </div>
@@ -79,7 +79,7 @@
         justify-content: space-between;
         height: var(--topbar-height);
         background-color: #2f2f2f;
-        z-index: 2;
+        z-index: 3;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
     span {
@@ -87,7 +87,6 @@
         flex-direction: row;
         margin-left: 10px;
         margin-right: 10px;
-        white-space: nowrap;
     }
     button {
         display: flex;
@@ -98,7 +97,7 @@
         color: whitesmoke;
         text-decoration: none;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 500;
         margin: 4px 4px;
         cursor: pointer;
     }

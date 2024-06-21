@@ -1,14 +1,14 @@
 <script>
-    import { theme } from "../../Theme";
+    import { ThemeStore } from "../../Theme";
 
-    let themeValue;
+    let theme;
 
-    theme.subscribe((_value) => {
-        themeValue = _value;
+    ThemeStore.subscribe((_value) => {
+        theme = _value;
     });
 </script>
 
-<div style="background-color: {themeValue["window"]["Panel body"]}; --button-background: {themeValue["window"]["Button background"]}; --button-gradient: {(themeValue["window"]["Button background"].length == 9 ? themeValue["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {themeValue["window"]["On"]}; --rec: {themeValue["window"]["Record button color"]};">
+<div style="background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
     <span class="normal-button button-active">FILE</span>
     <span class="play-button-group">
         <span class="play-button button-active">PLAY</span><i></i>
