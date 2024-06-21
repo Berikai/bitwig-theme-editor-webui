@@ -27,7 +27,8 @@
         const allElementsArray = Array.from(allElements);
         // TODO: Search by sorting!
 
-        for (let i = allElementsArray.length-1; i > 0; i--) {
+        let isAccurateFound = false;
+        for (let i = allElementsArray.length-1; i >= 0; i--) {
             const element = allElementsArray[i];
 
             if(searchValue == "" && element.tagName == "DIV") {
@@ -35,11 +36,21 @@
                 element.style.backgroundColor = 'whitesmoke';
                 continue;
             }
+
+            if (element.id === searchValue && !isAccurateFound) {
+                // @ts-ignore
+                element.parentElement.parentElement.style.backgroundColor = 'lime';
+                element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                isAccurateFound = true;
+                continue;
+            }
             
             if (element.textContent.includes(searchValue) && element.tagName == "DIV") {
-                // @ts-ignore
-                element.style.backgroundColor = 'yellow';
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (!isAccurateFound) {
+                    // @ts-ignore
+                    element.style.backgroundColor = 'yellow';
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             } else if (element.tagName == "DIV") {
                 // @ts-ignore
                 element.style.backgroundColor = 'whitesmoke';
