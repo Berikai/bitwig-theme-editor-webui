@@ -14,7 +14,8 @@
 
     ThemeStore.subscribe((_value) => {
         theme = _value;
-        if (pickr != undefined && pickr.getColor().toHEXA() != theme[selected][value]){
+        if (pickr != null && pickr != undefined && pickr.getColor() != null && pickr.getColor().toHEXA() != theme[selected][value] && theme != undefined && theme[selected] != undefined && theme[selected][value] != undefined){
+            console.log(theme[selected][value])
             pickr.setColor(theme[selected][value]);
         }
     });
@@ -49,8 +50,6 @@
                 _value[selected][value] = selectedColor;
                 return _value;
             });
-
-            console.log("Selected color:", selectedColor);
         });
     
         return () => {
