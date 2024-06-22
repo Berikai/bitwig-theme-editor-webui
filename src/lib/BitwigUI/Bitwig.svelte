@@ -52,6 +52,7 @@
         width: var(--width);
         height: var(--height);
         box-shadow: #202020 0px 0px 15px;
+        cursor: pointer;
     }
     span {
         --side-margin: 5px;
