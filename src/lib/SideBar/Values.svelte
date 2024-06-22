@@ -136,11 +136,16 @@
         padding-left: 10px;
         padding-right: 10px;
         border: none;
+        color: whitesmoke;
         background-color: #6f6f6f;
-        font-weight: 700;
+        font-weight: 600;
     }
     input:focus {
         outline: none;
+    }
+    ::placeholder {
+        color: lightgray;
+        opacity: 1; /* Firefox */
     }
     button {
         --button-height: 40px;
@@ -150,9 +155,10 @@
         justify-content: center;
         width: 50%;
         height: var(--button-height);
+        color: whitesmoke;
         background-color: #4f4f4f;
         font-size: larger;
-        font-weight: 900;
+        font-weight: 800;
     }
     button:hover {
         background-color: #6f6f6f;
@@ -160,6 +166,7 @@
     }
     a {
         --button-height: 40px;
+        text-decoration: none;
         border: none;
         display: flex;
         align-items: center;
@@ -168,8 +175,7 @@
         height: var(--button-height);
         background-color: #4f4f4f;
         font-size: larger;
-        font-weight: 900;
-        text-decoration: none;
+        font-weight: 800;
         color: whitesmoke;
     }
     a:hover {
