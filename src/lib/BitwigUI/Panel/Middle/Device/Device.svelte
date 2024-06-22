@@ -1,5 +1,19 @@
 <script>
+    import { onMount } from "svelte";
     import { ThemeStore } from "../../../../Theme";
+    import { scrollToValue } from '../../../../scrollToValue';
+
+    onMount(() => {
+        document.getElementById("device-bg").addEventListener("mousedown", (e) => {
+            scrollToValue(e, "Hole (dark)")
+        });
+
+        Array.from(document.getElementsByClassName("column")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Device Header")
+            });
+        });
+    });
 
     let theme;
 
@@ -8,7 +22,7 @@
     });
 </script>
 
-<div style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --device-header: {theme["window"]["Device Header"]};">
+<div id="device-bg" style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --device-header: {theme["window"]["Device Header"]};">
     <span class="column">
         <span class="line" style="background-color: #808080;"></span>
         <i class="rotate">PROJECT</i>
@@ -27,7 +41,7 @@
         width: 100%;
         height: 243px;
         border-radius: 3px;
-        border: 2px solid var(--panel-body);
+        border: 2px solid var(--panel-stroke);
         margin-top: 3px;
         background-color: var(--hole-dark);
     }
@@ -52,6 +66,5 @@
     .line {
         width: 100%;
         height: 5px;
-        background-color: aliceblue;
     }
 </style>

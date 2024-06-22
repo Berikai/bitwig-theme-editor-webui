@@ -1,5 +1,19 @@
 <script>
+    import { onMount } from "svelte";
     import { ThemeStore } from "../../../Theme";
+    import { scrollToValue } from '../../../scrollToValue';
+
+    onMount(() => {
+        document.getElementById("browser-panel").addEventListener("mousedown", (e) => {
+            scrollToValue(e, "Hole (medium)")
+        });
+
+        Array.from(document.getElementsByClassName("hole-dark")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Hole (dark)")
+            });
+        });
+    });
 
     let theme;
 
@@ -8,11 +22,11 @@
     });
 </script>
 
-<div style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --hole-medium: {theme["window"]["Hole (medium)"]};">
+<div id="browser-panel" style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --hole-medium: {theme["window"]["Hole (medium)"]};">
     <span class="top-nav"></span>
     <span class="everything-bar">
         <i>Everything</i>
-        <span class="search-bar"><i class="text">Search</i></span>
+        <span class="search-bar hole-dark"><i class="text">Search</i></span>
         <span class="locations">
             <span class="location-side">
                 <i>Location</i>
@@ -26,7 +40,7 @@
             </span>
         </span>
     </span>
-    <span class="files"></span>
+    <span class="files hole-dark"></span>
     <span class="bottom-bar"></span>
 </div>
 

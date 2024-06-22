@@ -1,5 +1,49 @@
 <script>
+    import { onMount } from "svelte";
     import { ThemeStore } from "../../../Theme";
+    import { scrollToValue } from '../../../scrollToValue';
+
+    onMount(() => {
+        document.getElementById("insp_title").addEventListener("mousedown", (e) => {
+            scrollToValue(e, "Panel body")
+        });
+
+        Array.from(document.getElementsByClassName("display-background")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Display Background")
+            });
+        });
+
+        Array.from(document.getElementsByClassName("hole-light")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Hole (light)")
+            });
+        });
+
+        Array.from(document.getElementsByClassName("hole-medium")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Hole (medium)")
+            });
+        });
+
+        Array.from(document.getElementsByClassName("on")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "On")
+            });
+        });
+
+        Array.from(document.getElementsByClassName("button-background")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Button background")
+            });
+        });
+
+        Array.from(document.getElementsByClassName("rec")).forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                scrollToValue(e, "Record button color")
+            });
+        });
+    });
 
     let theme;
 
@@ -8,70 +52,68 @@
     });
 </script>
 
-<div style="--rec: {theme["window"]["Record button color"]}; --display-background: {theme["window"]["Display Background"]}; --hole-light: {theme["window"]["Hole (light)"]}; --hole-medium: {theme["window"]["Hole (medium)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
-    <span class="title">INSTRUMENT TRACK</span>
-    <span class="sub-title">Inst 1</span>
-    <span class="color-palette">
+<div style="--rec: {theme["window"]["Record button color"]}; --display-background: {theme["window"]["Display Background"]}; --hole-light: {theme["window"]["Hole (light)"]}; --hole-medium: {theme["window"]["Hole (medium)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
+    <span id="insp_title" class="title">INSTRUMENT TRACK</span>
+    <span class="sub-title display-background">Inst 1</span>
+    <span class="color-palette display-background">
         <span class="color" style="background-color: #2c2c2c;"/><span class="color" style="background-color: #7a7a7a;"/><span class="color" style="background-color: #c9c9c9;"/><span class="color" style="background-color: #8689ac;"/><span class="color" style="background-color: #a37943;"/><span class="color" style="background-color: #c69f70;"/><span class="color" style="background-color: #5761c6;"/><span class="color" style="background-color: #848ae0;"/><span class="color" style="background-color: #9549cb;"/>
         <span class="color" style="background-color: #d93871;"/><span class="color" style="background-color: #d92e24;"/><span class="color" style="background-color: #ff5706;"/><span class="color" style="background-color: #d99d10;"/><span class="color" style="background-color: #739814;"/><span class="color" style="background-color: #009d17;"/><span class="color" style="background-color: #00a694;"/><span class="color" style="background-color: #0099d9;"/><span class="color" style="background-color: #bc76b0;"/>
         <span class="color" style="background-color: #e16691;"/><span class="color" style="background-color: #ec6157;"/><span class="color" style="background-color: #ff833e;"/><span class="color" style="background-color: #e4b74e;"/><span class="color" style="background-color: #a0c04c;"/><span class="color" style="background-color: #3ebb62;"/><span class="color" style="background-color: #43d2b9;"/><span class="color" style="background-color: #44c8ff;"/><span class="color" style="background-color: #d1b9db;"/>
     </span>
-    <span class="comment">Comment</span>
-    <span class="active-area">
-        <svg width="25px" height="25px">
+    <span class="comment display-background">Comment</span>
+    <span class="active-area hole-light">
+        <svg class="on" width="25px" height="25px">
             <circle cx="11" cy="11" r="8" fill="{theme["window"]["On"]}" />
         </svg>
         Active
     </span>
-    <span class="channel-area">
+    <span class="channel-area hole-light">
         <span class="channel-row">
             Channel
-            <span class="channel-all-button">All</span>
+            <span class="channel-all-button button-background">All</span>
             <svg class="arrow-right" width="6px" height="6px" viewBox="0 0 12 12">
                 <polygon points="0,0 10,5 0,10" fill="white" />
             </svg>
-            <span class="channel-all-button">1</span>
+            <span class="channel-all-button button-background">1</span>
         </span>
         <span class="bend-row">
             P. Bend
-            <span class="channel-on-button" style="background-color: {theme["window"]["On"]};">
+            <span class="channel-on-button on" style="background-color: {theme["window"]["On"]};">
                 →Expr.
-                <span class="channel-on-right" style="color: {theme["window"]["On"]};"> <code>2</code><code>2</code></span>
+                <span class="channel-on-right display-background" style="color: {theme["window"]["On"]};"> <code>2</code><code>2</code></span>
             </span>
         </span>
     </span>
     <span class="device-area">
-        <span class="device-nav">
-            <span class="device-button"></span>
+        <span class="device-nav hole-light">
+            <span class="device-button hole-medium"></span>
         </span>
-        <span class="device-in"></span>
+        <span class="device-in hole-medium"></span>
     </span>
-    <span class="send-area">
-        <span class="send-button">All ins</span>
-        <span class="send-button">Master</span>
+    <span class="send-area hole-light">
+        <span class="send-button button-background">All ins</span>
+        <span class="send-button button-background">Master</span>
     </span>
     <span class="mixer-area">
-        <span class="mixer-half" style="background-color: var(--hole-light);">
+        <span class="mixer-half hole-light" style="background-color: var(--hole-light);">
             Sends
         </span>
         <span class="mixer-half">
             <span class="mixer-button">
-                <span class="mixer-button-r">
+                <span class="mixer-button-r rec">
                     <svg class="circle" width="10px" height="10px">
                         <circle cx="5" cy="5" r="5" fill="black" />
                     </svg>
                 </span>
-                <span class="mixer-button-n">S</span>
-                <span class="mixer-button-n">M</span>
+                <span class="mixer-button-n button-background">S</span>
+                <span class="mixer-button-n button-background">M</span>
             </span>
-            <span class="mixer-volume">
-                <svg width="2px" height="100%">
-                    <line x1="1" y1="2px" x2="1" y2="20px" stroke="{theme["window"]["On"]}" />
+            <span class="mixer-volume hole-medium">
+                <svg width="2px" height="20px" viewBox="0 0 2 20">
+                    <line x1="1" y1="2px" x2="1" y2="18px" stroke="{theme["window"]["On"]}" />
                 </svg>
             </span>
-            <span class="mixer-limiter">
-
-            </span>
+            <span class="mixer-limiter hole-medium"></span>
         </span>
     </span>
 </div>
@@ -84,7 +126,7 @@
         width: calc(161px - 2 * var(--border-width));
         height: calc(100% - 2 * var(--border-width));
         border-radius: 3px;
-        border: 2px solid var(--panel-body);
+        border: 2px solid var(--panel-stroke);
         overflow: hidden;
         background-color: var(--panel-body);
     }
@@ -109,7 +151,7 @@
         padding-top: 3px;
         padding-left: 3px;
         font-style: italic;
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
     }
     .color-palette {
         display: flex;
@@ -119,7 +161,7 @@
         padding-left: 2px;
         height: 52px;
         width: 156px;
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
         background-color: var(--display-background);
     }
     .color {
@@ -130,7 +172,7 @@
     }
     .comment {
         height: 102px;
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
         background-color: var(--display-background);
         padding-left: 3px;
         font-size: 10px;
@@ -145,14 +187,14 @@
         padding-left: 1px;
         font-size: 12px;
         background-color: var(--hole-light);
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
     }
     .channel-area {
         display: flex;
         flex-direction: column;
         height: 53px;
         background-color: var(--hole-light);
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
 
     }
     .channel-row {
@@ -197,7 +239,7 @@
         width: 100%;
         height: 100%;
         font-size: 11px;
-        background-color: rgb(39, 39, 39);
+        background-color: var(--display-background);
         overflow: hidden;
     }
     .arrow-right {
@@ -215,7 +257,7 @@
         display: flex;
         flex-direction: column;
         height: 153px;
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
     }
     .device-nav {
         display: flex;
@@ -241,7 +283,7 @@
         flex-direction: column;
         height: 51px;
         background-color: var(--hole-light);
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
     }
     .send-button {
         display: flex;
