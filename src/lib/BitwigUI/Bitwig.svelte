@@ -42,8 +42,6 @@
         --height: 768px;
         --top-margin: 50px;
 
-        cursor: default;
-
         display: flex;
         flex-direction: column;
         min-width: var(--width);
