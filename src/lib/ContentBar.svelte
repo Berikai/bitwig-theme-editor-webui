@@ -17,13 +17,25 @@
             return;
         }
 
+        if (scale < 100) {
+            scale += 10;
+            scaling.set(scale);
+            return;
+        }
+
         scale += 25;
         scaling.set(scale);
     };
 
     const decrease = () => {
-        if (scale <= 25) {
-            scale = 25;
+        if (scale <= 20) {
+            scale = 20;
+            scaling.set(scale);
+            return;
+        }
+
+        if (scale <= 100) {
+            scale -= 10;
             scaling.set(scale);
             return;
         }
