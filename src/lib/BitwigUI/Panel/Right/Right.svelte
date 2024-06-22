@@ -8,7 +8,7 @@
     });
 </script>
 
-<div style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --hole-medium: {theme["window"]["Hole (medium)"]};">
+<div style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --hole-medium: {theme["window"]["Hole (medium)"]};">
     <span class="top-nav"></span>
     <span class="everything-bar">
         <i>Everything</i>
@@ -37,7 +37,7 @@
         height: calc(100% - 2 * var(--border-width));
         background-color: var(--hole-medium);
         border-radius: 3px;
-        border: 2px solid var(--panel-body);
+        border: 2px solid var(--panel-stroke);
         overflow: hidden;
     }
     .text {
@@ -47,7 +47,7 @@
         display: flex;
         width: 100%;
         height: 40px;
-        border-bottom: 2px solid var(--panel-body);
+        border-bottom: 2px solid var(--panel-stroke);
     }
     .everything-bar {
         display: flex;
