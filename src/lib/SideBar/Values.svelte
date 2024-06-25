@@ -158,7 +158,7 @@
         color: whitesmoke;
         background-color: #4f4f4f;
         font-size: larger;
-        font-weight: 800;
+        font-weight: 700;
     }
     button:hover {
         background-color: #6f6f6f;
@@ -175,7 +175,7 @@
         height: var(--button-height);
         background-color: #4f4f4f;
         font-size: larger;
-        font-weight: 800;
+        font-weight: 700;
         color: whitesmoke;
     }
     a:hover {
