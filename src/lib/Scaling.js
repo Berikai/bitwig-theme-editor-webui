@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const scaling = writable(100);
+export const scaling = writable(80);
