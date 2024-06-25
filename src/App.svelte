@@ -2,14 +2,14 @@
     import Content from "./lib/Content.svelte";
     import Sidebar from "./lib/SideBar/SideBar.svelte";
     import Topbar from "./lib/TopBar/TopBar.svelte";
-    import ContentBar from "./lib/ContentBar.svelte";
+    import ZoomBar from "./lib/ZoomBar.svelte";
 </script>
 
 <main>
     <Topbar />
     <div>
         <Sidebar />
-        <ContentBar />
+        <ZoomBar />
         <Content />
     </div>
 </main>
