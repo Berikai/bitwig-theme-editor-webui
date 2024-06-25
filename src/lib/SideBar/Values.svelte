@@ -37,7 +37,7 @@
                 continue;
             }
 
-            if (element.id === searchValue && !isAccurateFound) {
+            if (element.id.toLowerCase() === searchValue.toLowerCase() && !isAccurateFound) {
                 // @ts-ignore
                 element.parentElement.parentElement.style.backgroundColor = 'lime';
                 element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -45,7 +45,7 @@
                 continue;
             }
             
-            if (element.textContent.includes(searchValue) && element.tagName == "DIV") {
+            if (element.textContent.toLowerCase().includes(searchValue.toLowerCase()) && element.tagName == "DIV") {
                 if (!isAccurateFound) {
                     // @ts-ignore
                     element.style.backgroundColor = 'yellow';
@@ -199,10 +199,9 @@
     .modal-box {
         --modal-box-height: 320px;
         --modal-box-width: 460px;
-        --sidebar-width: 350px;
         position: relative;
         top: calc(100vh - var(--modal-box-height) - var(--topbar-height) - 4*20px);
-        left: calc(var(--sidebar-width) + 60px);
+        left: calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 60px);
         width: var(--modal-box-width);
         height: var(--modal-box-height);
         padding: 20px;
