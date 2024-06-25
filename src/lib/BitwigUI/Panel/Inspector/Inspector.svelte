@@ -169,7 +169,7 @@
         overflow: hidden;
         background-color: var(--panel-body);
 
-        opacity: 0.5; /*Development only, set to 1 in production */
+        opacity: 1; /*Development only, set to 1 in production */
     }
     span {
         width: 100%;
