@@ -55,7 +55,7 @@
     <span>
         <a target=”_blank” href="https://github.com/berikai/bitwig-theme-editor-webui" style="white-space: nowrap;">Bitwig Theme Editor WebUI</a>
     </span>
-    <span>
+    <span id="how-to">
         <button class="small-text" on:click={() => modalState = true}>How to apply themes to Bitwig Studio?</button>
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -71,6 +71,12 @@
 </nav>
 
 <style>
+    @media only screen and (max-width: 719px) {
+        #how-to { display: none; }
+    }
+    @media only screen and (min-width: 720px) {
+        #how-to { display: flex; }
+    }
     nav {
         --topbar-height: 40px;
 
