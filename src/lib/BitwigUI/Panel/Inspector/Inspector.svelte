@@ -2,6 +2,12 @@
     import { onMount } from "svelte";
     import { ThemeStore } from "../../../Theme";
     import { scrollToValue } from '../../../scrollToValue';
+    
+    import Device from "./Icons/Device.svelte";
+    import ModulationBySource from "./Icons/ModulationBySource.svelte";
+    import Knob from "./Icons/Knob.svelte";
+    import ModulationByDestination from "./Icons/ModulationByDestination.svelte";
+    import Cpu from "../../WindowBar/Icons/CPU.svelte";
 
     onMount(() => {
         document.getElementById("insp_title").addEventListener("mousedown", (e) => {
@@ -61,10 +67,13 @@
         <span class="color" style="background-color: #e16691;"/><span class="color" style="background-color: #ec6157;"/><span class="color" style="background-color: #ff833e;"/><span class="color" style="background-color: #e4b74e;"/><span class="color" style="background-color: #a0c04c;"/><span class="color" style="background-color: #3ebb62;"/><span class="color" style="background-color: #43d2b9;"/><span class="color" style="background-color: #44c8ff;"/><span class="color" style="background-color: #d1b9db;"/>
     </span>
     <span class="comment display-background">Comment</span>
-    <span class="active-area hole-light">
-        <svg class="on" width="25px" height="25px">
-            <circle cx="11" cy="11" r="8" fill="{theme["window"]["On"]}" />
+    <span class="active-area hole-light" style="position: relative;">
+        <svg class="on" width="16" height="16">
+            <circle cx="8" cy="8" r="8" fill="{theme["window"]["On"]}"/>
         </svg>
+        <span style="position:absolute;height:100%;display:flex;align-items:center;margin-left:3px;">
+            <Cpu color={"#0f0f0f"} />
+        </span>
         Active
     </span>
     <span class="channel-area hole-light">
@@ -86,13 +95,43 @@
     </span>
     <span class="device-area">
         <span class="device-nav hole-light">
-            <span class="device-button hole-medium"></span>
+            <span class="device-button hole-medium">
+                <Device color={theme["window"]["On"]} />
+            </span>
+            <span class="device-button-r hole-light" style="background-color: none;">
+                <Knob color={"#cfcfcf"}/>
+            </span>
+            <span class="device-button-r hole-light" style="background-color: none;">
+                <ModulationBySource color={"#cfcfcf"}/>
+            </span>
+            <span class="device-button-r hole-light" style="background-color: none;">
+                <ModulationByDestination color={"#cfcfcf"}/>
+            </span>
         </span>
-        <span class="device-in hole-medium"></span>
+        <span class="device-in hole-medium">
+            <svg width="13px" height="13px" viewBox="0 0 13 13" fill="#8f8f8f" style="margin-top: 4px;margin-left: 4px;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+                <path d="M5.5,2l0,3.5l-3.5,0l0,2l3.5,0l0,3.5l2,0l0,-3.5l3.5,0l0,-2l-3.5,0l0,-3.5l-2,0Z" style="fill-rule:nonzero;"/>
+            </svg>
+        </span>
     </span>
     <span class="send-area hole-light">
-        <span class="send-button button-background">All ins</span>
-        <span class="send-button button-background">Master</span>
+        <span class="send-button button-background">
+            <span style="display:flex;align-items:center;width:17px;height:100%;border-right:1px solid {theme["window"]["Button stroke"]};margin-left:2px;margin-right:3px;">
+                <svg fill={theme["window"]["Monitoring buttons color"]} x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15">
+                <path d="m 6.5,5.5 -2.5,0 0,4 2.5,0 3.5,2.5 0,-9 z"/>
+                </svg>
+            </span>
+            All ins
+        </span>
+        <span class="send-button button-background">
+            <svg width="11px" height="11px" fill={"#cfcfcf"} viewBox="0 0 11 11" style="margin-left:5px;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+                <rect x="0" y="0" width="11" height="11" style="fill:none;"/>
+                <g>
+                    <path d="M1.59,1l-0.684,0l0,9l0.692,0l0,-5.857l1.038,4.63l0.693,0l0,-4.369l1.054,3.141l0.676,0l0,-2.704l1.075,1.886l0.656,0l0,-1.664l1.14,1.078l0.591,-0.315l1.385,0.001l0,-0.654l-2.022,0l-1.194,-0.9l-0.592,0l0,1.068l-1.075,-1.886l-0.656,0l0,1.914l-1.054,-3.142l-0.677,0l0,3.402l-1.046,-4.629Z" style="fill-rule:nonzero;"/>
+                </g>
+            </svg>
+            <i style="margin-left:5px;">Master</i>
+        </span>
     </span>
     <span class="mixer-area">
         <span class="mixer-half hole-light" style="background-color: var(--hole-light);">
@@ -129,9 +168,17 @@
         border: 2px solid var(--panel-stroke);
         overflow: hidden;
         background-color: var(--panel-body);
+
+        opacity: 0.5; /*Development only, set to 1 in production */
     }
     span {
         width: 100%;
+    }
+    .on {
+        width: 22px;
+        height: 25px;
+        margin-top: 8px;
+        margin-left: 3px;
     }
     .title {
         height: 18px;
@@ -220,6 +267,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        margin-top: 1px;
         padding-left: 6px;
         margin-left: 5px;
         height: 22px;
@@ -273,9 +321,20 @@
     }
     .device-button {
         display: flex;
+        justify-content: center;
+        align-items: center;
         width: 25%;
         height: 26px;
         background-color: var(--hole-medium);
+        border-bottom: 2px solid var(--hole-medium);
+    }
+    .device-button-r {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 26px;
+        background-color: var(--hole-light);
         border-bottom: 2px solid var(--hole-medium);
     }
     .send-area {
@@ -289,10 +348,9 @@
         display: flex;
         align-items: center;
         height: 20px;
-        width: 128px;
+        width: 148px;
         margin-top: 2px;
         margin-left: 3px;
-        padding-left: 20px;
         background-image: linear-gradient(var(--button-gradient), var(--button-background));
         border: 1px solid var(--button-stroke);
         border-radius: 5px;
