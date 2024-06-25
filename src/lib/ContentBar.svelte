@@ -83,7 +83,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-weight: bold;
+        font-weight: 600;
         font-size: 12px;
         width: 100%;
         background-color: #6f6f6f;
