@@ -9,11 +9,10 @@
 
 <style>
     div {
-        --sidebar-width: 350px;
         --content-padding: 10px;
         /*height: 100% + var(--content-padding);*/
         display: flex;
-        width: calc(100% - var(--sidebar-width));
+        width: calc(100% - max(var(--sidebar-width), var(--sidebar-min-width)));
         overflow: auto;
         padding: var(--content-padding);
         scrollbar-color: #444 #333;

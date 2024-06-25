@@ -14,14 +14,18 @@
     </div>
 </main>
 
+<!--
 <div class="smallscreen">
     <h2>Bitwig Theme Editor WebUI</h2>
     <p>Your screen resolution is too low.</p>
     <p>Please use a resolution with minimum 720px width.</p>
 </div>
+-->
 
 <style>
     main {
+        --sidebar-width: 20%;
+        --sidebar-min-width: 320px;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -35,7 +39,7 @@
         flex-direction: row;
         height: calc(100% - var(--topbar-height));
     }
-    @media only screen and (max-width: 719px) {
+    /*@media only screen and (max-width: 719px) {
         main { display: none; }
         .smallscreen { 
             display: flex;
@@ -49,5 +53,5 @@
     }
     @media only screen and (min-width: 720px) {
         .smallscreen { display: none; }
-    }
+    }*/
 </style>

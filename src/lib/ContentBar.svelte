@@ -1,7 +1,7 @@
 <script>
     import { scaling } from "./Scaling";
 
-    let scale = 100;
+    let scale;
 
     scaling.subscribe((value) => {
         scale = value;
@@ -53,13 +53,12 @@
 
 <style>
     div {
-        --sidebar-width: 350px;
         display: flex;
         justify-content: space-between;
         position: absolute;
         width: 75px;
         top: 12px;
-        left: calc(var(--sidebar-width) + 24px);
+        left: calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 24px);
         right: 24px;
         height: 30px;
         background-color: lightgray;
