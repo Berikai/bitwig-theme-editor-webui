@@ -16,8 +16,8 @@
             <span class="upper-channels">
                 <span class="channels-row" style="display:flex;justify-content:space-between;background-color:{theme["window"]["Hole (light)"]};">
                     <span style="display:flex;">
-                        <span style="display:flex;justify-content:center;align-items:center;width:38px;height:38px;background-color:{theme["window"]["Hole (medium)"]};">a</span>
-                        <span style="display:flex;justify-content:center;align-items:center;width:38px;height:38px;background-color:{theme["window"]["Hole (medium)"]};">a</span>
+                        <span style="display:flex;justify-content:center;align-items:center;width:38px;height:100%;background-color:{theme["window"]["Hole (medium)"]};">a</span>
+                        <span style="display:flex;justify-content:center;align-items:center;width:38px;height:100%;background-color:{theme["window"]["Hole (medium)"]};">a</span>
                     </span>
                     <span style="display:flex;">
                         <span style="display:flex;justify-content:center;align-items:center;width:41px;height:37px;border-top:1px solid {theme["window"]["Button stroke"]};border-left:1px solid {theme["window"]["Button stroke"]};background-color:{theme["window"]["Panel body"]};">b</span>
