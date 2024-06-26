@@ -28,8 +28,8 @@
     };
 
     const decrease = () => {
-        if (scale <= 20) {
-            scale = 20;
+        if (scale <= 50) {
+            scale = 50;
             scaling.set(scale);
             return;
         }
