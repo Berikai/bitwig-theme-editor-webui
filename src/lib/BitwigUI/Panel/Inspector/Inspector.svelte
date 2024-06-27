@@ -14,6 +14,10 @@
             scrollToValue(e, "Panel body")
         });
 
+        document.getElementById("cpu_svg").addEventListener("mousedown", (e) => {
+            scrollToValue(e, "On")
+        });
+
         Array.from(document.getElementsByClassName("display-background")).forEach((element) => {
             element.addEventListener("mousedown", (e) => {
                 scrollToValue(e, "Display Background")
@@ -72,7 +76,7 @@
             <circle cx="8" cy="8" r="8" fill="{theme["window"]["On"]}"/>
         </svg>
         <span style="position:absolute;height:100%;display:flex;align-items:center;margin-left:3px;">
-            <Cpu color={"#0f0f0f"} />
+            <span id="cpu_svg" style="display:flex;align-items:center;width:fit-content"><Cpu color={"#0f0f0f"} /></span>
         </span>
         Active
     </span>
