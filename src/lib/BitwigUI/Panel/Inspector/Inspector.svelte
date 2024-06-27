@@ -122,14 +122,13 @@
         <span class="send-button button-background">
             <span style="display:flex;align-items:center;width:17px;height:100%;border-right:1px solid {theme["window"]["Button stroke"]};margin-left:2px;margin-right:3px;">
                 <svg fill={theme["window"]["Monitoring buttons color"]} x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15">
-                <path d="m 6.5,5.5 -2.5,0 0,4 2.5,0 3.5,2.5 0,-9 z"/>
+                    <path d="m 6.5,5.5 -2.5,0 0,4 2.5,0 3.5,2.5 0,-9 z"/>
                 </svg>
             </span>
             All ins
         </span>
         <span class="send-button button-background">
             <svg width="11px" height="11px" fill={"#cfcfcf"} viewBox="0 0 11 11" style="margin-left:5px;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
-                <rect x="0" y="0" width="11" height="11" style="fill:none;"/>
                 <g>
                     <path d="M1.59,1l-0.684,0l0,9l0.692,0l0,-5.857l1.038,4.63l0.693,0l0,-4.369l1.054,3.141l0.676,0l0,-2.704l1.075,1.886l0.656,0l0,-1.664l1.14,1.078l0.591,-0.315l1.385,0.001l0,-0.654l-2.022,0l-1.194,-0.9l-0.592,0l0,1.068l-1.075,-1.886l-0.656,0l0,1.914l-1.054,-3.142l-0.677,0l0,3.402l-1.046,-4.629Z" style="fill-rule:nonzero;"/>
                 </g>

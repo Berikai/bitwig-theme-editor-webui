@@ -3,7 +3,6 @@
 </script>
 
 <svg width="26px" height="13px" fill={color} style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <rect x="0" y="0" width="26" height="13" style="fill:none;"/>
     <g>
         <svg viewBox="0 0 26 13">
             <g>
