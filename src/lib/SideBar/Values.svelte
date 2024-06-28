@@ -3,6 +3,8 @@
     import { ThemeStore } from "../Theme";
     import Contributors from "../Contributors";
 
+    export let display = "flex";
+
     let theme;
 
     ThemeStore.subscribe((value) => {
@@ -62,7 +64,7 @@
 
 </script>
 
-<aside>
+<aside style="--display-aside:{display};">
     <nav>
         <button on:click={() => selected = "window"} style={selected == "window" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Window</button>
         <button on:click={() => selected = "arranger"} style={selected == "arranger" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Arranger</button>
@@ -71,12 +73,12 @@
     <input id="search_bar" type="text" placeholder="Search color values" bind:value={searchValue} />
     <section id="window" style={selected != "window" ? "display: none;" : ""}>
         {#each Object.keys(theme["window"]) as value (value)}
-            <Value value={value} selected={"window"}/>
+        <Value value={value} selected={"window"}/>
         {/each}
     </section>
     <section id="arranger" style={selected != "arranger" ? "display: none;" : ""}>
         {#each Object.keys(theme["arranger"]) as value (value)}
-            <Value value={value} selected={"arranger"}/>
+        <Value value={value} selected={"arranger"}/>
         {/each}
     </section>
     <nav>
@@ -101,9 +103,10 @@
 
 <style>
     aside {
-        display: flex;  
+        display: var(--display-aside);  
         flex-direction: column;
         height: 100%;
+        width: 100%;
         background-color: gray;
         z-index: 2;
     }
@@ -200,8 +203,8 @@
         --modal-box-height: 320px;
         --modal-box-width: 460px;
         position: relative;
-        top: calc(100vh - var(--modal-box-height) - var(--topbar-height) - 4*20px);
-        left: calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 60px);
+        top: calc(100vh - var(--modal-box-height) - var(--topbar-height) - 4*22px);
+        left: min(calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 60px), calc(60vw - var(--modal-box-width)/1.7));
         width: var(--modal-box-width);
         height: var(--modal-box-height);
         padding: 20px;

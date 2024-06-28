@@ -58,8 +58,8 @@
         position: absolute;
         width: 75px;
         top: 12px;
-        left: calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 24px);
-        right: 24px;
+        /*left: calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 24px);*/
+        right: -99px;
         height: 30px;
         background-color: lightgray;
         z-index: 2;
