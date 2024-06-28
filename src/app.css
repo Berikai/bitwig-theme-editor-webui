@@ -19,10 +19,6 @@
     user-select: none; /* Standard syntax */
 }
 
-body {
-    margin: 0;
-}
-
 .pickr  {
     display: flex!important;
 }
