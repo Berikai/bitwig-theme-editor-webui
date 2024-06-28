@@ -155,7 +155,12 @@
                     <line x1="1" y1="2px" x2="1" y2="18px" stroke="{theme["window"]["On"]}" />
                 </svg>
             </span>
-            <span class="mixer-limiter hole-medium"></span>
+            <span class="mixer-limiter hole-medium">
+                <span style="display:flex;flex-direction:column;align-items:center;width:fit-content;">
+                    <span style="margin-right:4px;width:32px;height:2px;background-color:{theme["window"]["On"]};opacity:0.7;"></span>
+                    <span style="margin-right:5px;margin-bottom:5px;width:30px;height:51px;background-color:{theme["window"]["On"]};opacity:0.3;"></span>
+                </span>
+            </span>
         </span>
     </span>
 </div>
@@ -414,8 +419,8 @@
     }
     .mixer-limiter {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: end;
+        justify-content: flex-end;
         width: 78px;
         height: 118px;
         margin-top: 3px;

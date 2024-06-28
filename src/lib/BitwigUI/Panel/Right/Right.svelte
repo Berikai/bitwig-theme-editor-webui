@@ -4,6 +4,7 @@
     import { scrollToValue } from '../../../scrollToValue';
     
     import Any from "./Icons/Any.svelte";
+    import Locations from "./Icons/Locations.svelte";
 
     onMount(() => {
         document.getElementById("browser-panel").addEventListener("mousedown", (e) => {
@@ -25,7 +26,9 @@
 </script>
 
 <div id="browser-panel" style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --hole-medium: {theme["window"]["Hole (medium)"]};">
-    <span class="top-nav"></span>
+    <span class="top-nav">
+        <Locations />
+    </span>
     <span class="everything-bar">
         <i>Everything</i>
         <span class="search-bar hole-dark">
@@ -49,7 +52,9 @@
         </span>
     </span>
     <span class="files hole-dark">
-        
+        <span style="display:flex;margin-left:3px;margin-top:3px;height:23px;width:100%;opacity:0.5;">
+            <!--TODO: Highlighter-->
+        </span>
     </span>
     <span class="bottom-bar">
         
