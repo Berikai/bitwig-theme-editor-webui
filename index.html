@@ -2,13 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!--<link rel="icon" type="image/svg+xml" href="/vite.svg" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bitwig Theme Editor Web UI</title>
-    <script type="module" crossorigin src="/assets/index-B0Unu656.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DiS-DYV4.css">
+    <script type="module" crossorigin src="/assets/index-BADGSND9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index--3qHtnnk.css">
   </head>
-  <body>
-    <div id="app"></div>
+  <body style="margin: 0;">
+    <div id="app">
+      <div id="loading" style="position: absolute;display: flex;flex-direction: column;justify-content: center;text-align: center;line-height: 1.5;align-items: center;height: 100vh;width: 100vw;background-color: #242424;color: rgba(255, 255, 255, 0.87);font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, sans-serif;">
+        <h2 style="margin:10px;margin-bottom: 36px;">Bitwig Theme Editor WebUI</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="#ff8713" style="animation: .8s linear infinite rotate;margin-bottom: 144px;">
+          <path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"/>
+          <path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z" />
+        </svg>
+      </div>
+    </div>
+    <style>
+      @keyframes rotate { from { transform: rotate(0); } to { transform: rotate(360deg); }  }
+    </style>
   </body>
 </html>
