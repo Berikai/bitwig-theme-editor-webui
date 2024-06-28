@@ -3,8 +3,8 @@
     import TopBar from './TopBar/TopBar.svelte';
     import WindowBar from './WindowBar/WindowBar.svelte';
 
-    import { ThemeStore } from "../Theme";
-    import { scaling } from "../Scaling";
+    import { ThemeStore } from "../Scripts/Theme";
+    import { scaling } from "../Scripts/Scaling";
     import Bottom from './BottomBar/BottomBar.svelte';
     import Inspector from './Panel/Inspector/Inspector.svelte';
     import Middle from './Panel/Middle/Middle.svelte';

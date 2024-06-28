@@ -3,7 +3,7 @@
     import Load from "./LoadIcon.svelte";
     import Save from "./SaveIcon.svelte";
 
-    import { default_theme, ThemeStore } from "../Theme";
+    import { default_theme, ThemeStore } from "../Scripts/Theme";
 
     let theme;
 

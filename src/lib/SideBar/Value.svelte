@@ -2,8 +2,8 @@
     export let value;
     export let selected;
 
-    import { ThemeStore } from "../Theme";
-    import ThemeInfo from "../ThemeInfo";
+    import { ThemeStore } from "../Scripts/Theme";
+    import ThemeInfo from "../Scripts/ThemeInfo";
     import ColorPicker from "./ColorPicker.svelte";
 
     let theme;

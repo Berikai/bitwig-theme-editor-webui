@@ -1,7 +1,7 @@
 <script>
     import Value from "./Value.svelte";
-    import { ThemeStore } from "../Theme";
-    import Contributors from "../Contributors";
+    import { ThemeStore } from "../Scripts/Theme";
+    import Contributors from "../Scripts/Contributors";
 
     export let display = "flex";
 

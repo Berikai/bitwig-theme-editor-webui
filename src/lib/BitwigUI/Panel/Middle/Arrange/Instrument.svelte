@@ -5,7 +5,7 @@
     export let color = "#808080";
     export let name;
 
-    import { ThemeStore } from "../../../../Theme";
+    import { ThemeStore } from "../../../../Scripts/Theme";
 
     let theme;
 

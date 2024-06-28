@@ -3,7 +3,7 @@
     import NewProject from './NewProject.svelte';
     import Logo from './Logo.svelte';
     import WindowButtons from './WindowButtons.svelte';
-    import { scrollToValue } from '../../scrollToValue';
+    import { scrollToValue } from '../../Scripts/scrollToValue';
 
     onMount(() => {
         document.getElementById("top_bar").addEventListener("mousedown", (e) => {

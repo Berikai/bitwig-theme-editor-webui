@@ -6,7 +6,7 @@
     import Pickr from "@simonwep/pickr";
     import "@simonwep/pickr/dist/themes/monolith.min.css";
 
-    import { ThemeStore } from "../Theme";
+    import { ThemeStore } from "../Scripts/Theme";
   
     let pickr;
   

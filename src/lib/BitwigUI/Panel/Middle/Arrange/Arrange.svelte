@@ -1,5 +1,5 @@
 <script>
-    import { ThemeStore } from "../../../../Theme";
+    import { ThemeStore } from "../../../../Scripts/Theme";
     
     import Instrument from "./Instrument.svelte";
 

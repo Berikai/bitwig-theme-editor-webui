@@ -1,5 +1,5 @@
 <script>
-    import { scaling } from "./Scaling";
+    import { scaling } from "./Scripts/Scaling";
 
     let scale;
 

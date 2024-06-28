@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
-    import { ThemeStore } from "../../../Theme";
-    import { scrollToValue } from '../../../scrollToValue';
+    import { ThemeStore } from "../../../Scripts/Theme";
+    import { scrollToValue } from '../../../Scripts/scrollToValue';
     
     import Device from "./Icons/Device.svelte";
     import ModulationBySource from "./Icons/ModulationBySource.svelte";
