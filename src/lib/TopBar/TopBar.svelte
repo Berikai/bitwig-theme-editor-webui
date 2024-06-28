@@ -53,7 +53,7 @@
         <button on:click={downloadJSON}><Save />Download</button>
     </span>
     <span>
-        <a target=”_blank” href="https://github.com/berikai/bitwig-theme-editor-webui" style="white-space: nowrap;">Bitwig Theme Editor WebUI</a>
+        <a id="main-title" target=”_blank” href="https://github.com/berikai/bitwig-theme-editor-webui" style="white-space: nowrap;">Bitwig Theme Editor WebUI</a>
     </span>
     <span id="how-to">
         <button class="small-text" on:click={() => modalState = true}>How to apply themes to Bitwig Studio?</button>
@@ -76,6 +76,12 @@
     }
     @media only screen and (min-width: 720px) {
         #how-to { display: flex; }
+    }
+    @media only screen and (max-width: 539px) {
+        #main-title { display: none; }
+    }
+    @media only screen and (min-width: 540px) {
+        #main-title { display: flex; }
     }
     nav {
         --topbar-height: 40px;
