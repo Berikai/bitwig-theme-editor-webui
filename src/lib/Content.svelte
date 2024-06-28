@@ -9,10 +9,10 @@
 
 <style>
     div {
-        --content-padding: 10px;
+        --content-padding: 50px;
         /*height: 100% + var(--content-padding);*/
         display: flex;
-        width: calc(100% - max(var(--sidebar-width), var(--sidebar-min-width)));
+        width: calc(100% - max(var(--sidebar-width), var(--sidebar-min-width)) - 2*var(--content-padding));
         overflow: auto;
         padding: var(--content-padding);
         scrollbar-color: #444 #333;
