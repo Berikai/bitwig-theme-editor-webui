@@ -1,12 +1,12 @@
 # Bitwig Theme Editor WebUI
 
-> The editor is working but Bitwig UI part is in development.
-
 > Currently only supports JSON files.
 
 This is a WebUI for [Bitwig Theme Editor](https://github.com/berikai/bitwig-theme-editor) to create theme files visually, written with [Svelte](https://svelte.dev).
 
 You can click [here](https://berikai.github.io/bitwig-theme-editor-webui/) to test it live in its current state.
+
+[demo.webm](https://github.com/Berikai/bitwig-theme-editor-webui/assets/18515671/51504e57-14b8-42eb-8b6a-289cdb00ace9)
 
 ## Run Locally
 
