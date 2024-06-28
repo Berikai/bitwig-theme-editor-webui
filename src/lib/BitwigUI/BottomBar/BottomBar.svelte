@@ -1,13 +1,5 @@
 <script>
-    import { onMount } from "svelte";
     import { ThemeStore } from "../../Scripts/Theme";
-    import { scrollToValue } from "../../Scripts/scrollToValue";
-
-    onMount(() => {
-        document.getElementById("bottom_bar").addEventListener("mousedown", (e) => {
-            scrollToValue(e, "Window background")
-        });
-    });
 
     let theme;
 

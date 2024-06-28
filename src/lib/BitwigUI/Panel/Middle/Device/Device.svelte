@@ -1,19 +1,5 @@
 <script>
-    import { onMount } from "svelte";
     import { ThemeStore } from "../../../../Scripts/Theme";
-    import { scrollToValue } from '../../../../Scripts/scrollToValue';
-
-    onMount(() => {
-        document.getElementById("device-bg").addEventListener("mousedown", (e) => {
-            scrollToValue(e, "Hole (dark)")
-        });
-
-        Array.from(document.getElementsByClassName("column")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Device Header")
-            });
-        });
-    });
 
     let theme;
 

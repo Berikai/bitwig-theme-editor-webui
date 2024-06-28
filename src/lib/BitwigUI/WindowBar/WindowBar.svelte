@@ -1,7 +1,5 @@
 <script>
-    import { onMount } from "svelte";
     import { ThemeStore } from "../../Scripts/Theme";
-    import { scrollToValue } from '../../Scripts/scrollToValue';
     
     import Cpu from "./Icons/CPU.svelte";
     import Io from "./Icons/IO.svelte";
@@ -10,38 +8,6 @@
     import Loop from "./Icons/Loop.svelte";
     import PunchIn from "./Icons/PunchIn.svelte";
     import PunchOut from "./Icons/PunchOut.svelte";
-
-    onMount(() => {
-        document.getElementById("panel").addEventListener("mousedown", (e) => {
-            scrollToValue(e, "Panel body")
-        });
-
-        Array.from(document.getElementsByClassName("play-button")).forEach((element) => {
-            if (element.id == "rec") {
-                element.addEventListener("mousedown", (e) => {
-                    scrollToValue(e, "Record button color")
-                });
-                return;
-            }
-
-            if (element.id == "play") {
-                element.addEventListener("mousedown", (e) => {
-                    scrollToValue(e, "On")
-                });
-                return;
-            }
-
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Button background")
-            });
-        });
-
-        Array.from(document.getElementsByClassName("normal-button")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Button background")
-            });
-        });
-    });
     
     let theme;
 
@@ -50,38 +16,38 @@
     });
 </script>
 
-<div id="panel" style="--hitech-on: {theme["window"]["Hitech on"]}; --button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
+<div id="panel" class="panel-body" style="--hitech-background: {theme["window"]["Hitech background"]}; --hitech-on: {theme["window"]["Hitech on"]}; --button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
     <span class="window-panel-main">    
-        <span class="normal-button button-active">FILE</span>
+        <span class="normal-button button-active button-background">FILE</span>
         <span class="play-button-group">
-            <span class="play-button button-active">PLAY</span><i></i>
-            <span id="play" class="play-button">
+            <span class="play-button button-active button-background">PLAY</span><i></i>
+            <span id="play" class="play-button button-background">
                 <svg width="24" fill="#ffffff" viewBox="0 0 24 24">
                     <path stroke-width="1.5" d="M18.25 12L5.75 5.75V18.25L18.25 12Z"></path>
                 </svg>
             </span><i></i>
-            <span class="play-button button-active">
+            <span class="play-button button-active button-background">
                 <svg width="11" height="11">
                     <rect width="11" height="11" fill="#ffffff" />
                 </svg>
             </span><i></i>
-            <span id="rec" class="play-button">
+            <span id="rec" class="play-button button-background">
                 <svg width="13" height="13">
                     <circle cx="6.5" cy="6.5" r="6.5" fill="#ffffff" />
                 </svg>
             </span>
         </span>
-        <span class="hitech-group" style="">
+        <span class="hitech-group">
             <span class="hitech-part1">
                 <span class="hitech-row">
                     <Cpu color={theme["window"]["Hitech on"]} />
-                    <span style="margin-top:3px;margin-left: 3px;width: 20px;height: 10px;background-color:{theme["window"]["Hitech on"]};opacity: 0.5;"></span>
+                    <span style="margin-top:3px;margin-left: 3px;width: 20px;height: 10px;background-color:{theme["window"]["Hitech on"]};opacity: 0.3;"></span>
                 </span>
                 <span class="hitech-row">
                     <Io color={theme["window"]["Hitech on"]} />
                     <span style="display: flex; flex-direction: column;">
-                        <span style="margin-top:2px;margin-left: 3px;width: 20px;height: 4px;background-color:{theme["window"]["Hitech on"]};opacity: 0.5;"></span>
-                        <span style="margin-top:1px;margin-left: 3px;width: 20px;height: 4px;background-color:{theme["window"]["Hitech on"]};opacity: 0.5;"></span>
+                        <span style="margin-top:2px;margin-left: 3px;width: 20px;height: 4px;background-color:{theme["window"]["Hitech on"]};opacity: 0.3;"></span>
+                        <span style="margin-top:1px;margin-left: 3px;width: 20px;height: 4px;background-color:{theme["window"]["Hitech on"]};opacity: 0.3;"></span>
                     </span>
                 </span>
             </span>

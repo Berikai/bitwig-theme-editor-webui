@@ -9,6 +9,9 @@
     import Inspector from './Panel/Inspector/Inspector.svelte';
     import Middle from './Panel/Middle/Middle.svelte';
     import Right from './Panel/Right/Right.svelte';
+    
+    import { onMount } from 'svelte';
+    import { bindValues } from '../Scripts/BindValues';
 
     let theme;
 
@@ -23,6 +26,10 @@
     });
 
     const showReference = 0; // Development only, set to 0 in production
+
+    onMount(() => {
+        bindValues();
+    });
 </script>
 
 <div id="bitwig" style="{showReference ? `background-image: url(${Reference});` : ""} background-color: {theme["window"]["Window background"]}; zoom: {scale}%;">

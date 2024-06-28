@@ -1,59 +1,11 @@
 <script>
-    import { onMount } from "svelte";
     import { ThemeStore } from "../../../Scripts/Theme";
-    import { scrollToValue } from '../../../Scripts/scrollToValue';
     
     import Device from "./Icons/Device.svelte";
     import ModulationBySource from "./Icons/ModulationBySource.svelte";
     import Knob from "./Icons/Knob.svelte";
     import ModulationByDestination from "./Icons/ModulationByDestination.svelte";
     import Cpu from "../../WindowBar/Icons/CPU.svelte";
-
-    onMount(() => {
-        document.getElementById("insp_title").addEventListener("mousedown", (e) => {
-            scrollToValue(e, "Panel body")
-        });
-
-        document.getElementById("cpu_svg").addEventListener("mousedown", (e) => {
-            scrollToValue(e, "On")
-        });
-
-        Array.from(document.getElementsByClassName("display-background")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Display Background")
-            });
-        });
-
-        Array.from(document.getElementsByClassName("hole-light")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Hole (light)")
-            });
-        });
-
-        Array.from(document.getElementsByClassName("hole-medium")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Hole (medium)")
-            });
-        });
-
-        Array.from(document.getElementsByClassName("on")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "On")
-            });
-        });
-
-        Array.from(document.getElementsByClassName("button-background")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Button background")
-            });
-        });
-
-        Array.from(document.getElementsByClassName("rec")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Record button color")
-            });
-        });
-    });
 
     let theme;
 

@@ -22,13 +22,13 @@
                 <span style="display:flex;justify-content:space-between;width:100%;">
                     <i style="margin-left:6px;color:{isSelected ? "#000000" : "#ffffff"};">{name}</i>
                     <span style="display: flex;">
-                        <span class="button rec" style={isRec ? "background-color:red;background-image:none;" : ""}>
+                        <span class="button {isRec ? "rec" : "button-background"}" style={isRec ? "background-color:red;background-image:none;" : ""}>
                             <svg class="circle" width="9px" height="9px">
                                 <circle cx="4.5" cy="4.5" r="4.5" fill={isRec ? "black" : "white"} />
                             </svg>
                         </span>
-                        <span class="button">S</span>
-                        <span class="button">M</span>
+                        <span class="button button-background">S</span>
+                        <span class="button button-background">M</span>
                     </span>
                 </span>
                 <span style="display:flex;justify-content:space-between;width:100%;">
@@ -67,7 +67,7 @@
                         <span style="display:flex;width:52px;height:14px;background-color:{theme["window"]["On"]};opacity:0.3;"></span>
                         <span style="display:flex;width:1px;height:14px;background-color:{theme["window"]["On"]};opacity:0.7;"></span>
                     </span>
-                    <span class="button" style="margin-top:3px;margin-left:6px;">
+                    <span class="button button-background" style="margin-top:3px;margin-left:6px;">
                         <svg width="15px" height="15px" fill={"#ffffff"} style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><rect x="3" y="3" width="9" height="2"/><rect x="3" y="6.5" width="9" height="1.989"/><rect x="3" y="10" width="9" height="2"/></svg>
                     </span>
                 </span>

@@ -1,22 +1,8 @@
 <script>
-    import { onMount } from "svelte";
     import { ThemeStore } from "../../../Scripts/Theme";
-    import { scrollToValue } from '../../../Scripts/scrollToValue';
     
     import Any from "./Icons/Any.svelte";
     import Locations from "./Icons/Locations.svelte";
-
-    onMount(() => {
-        document.getElementById("browser-panel").addEventListener("mousedown", (e) => {
-            scrollToValue(e, "Hole (medium)")
-        });
-
-        Array.from(document.getElementsByClassName("hole-dark")).forEach((element) => {
-            element.addEventListener("mousedown", (e) => {
-                scrollToValue(e, "Hole (dark)")
-            });
-        });
-    });
 
     let theme;
 
