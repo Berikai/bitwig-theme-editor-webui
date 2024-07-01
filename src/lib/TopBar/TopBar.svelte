@@ -23,12 +23,34 @@
 
     $: if (files) {
         files[0].text().then((text) => {
-            ThemeStore.set(structuredClone(JSON.parse(text)));
+            const theme = structuredClone(default_theme);
+            const loaded_json = structuredClone(JSON.parse(text));
+
+            for (const key in loaded_json) {
+                if (Object.prototype.hasOwnProperty.call(theme, key)) {
+                    for (const in_key in loaded_json[key]) {
+                        if (Object.prototype.hasOwnProperty.call(theme[key], in_key)) {
+                            theme[key][in_key] = loaded_json[key][in_key];
+                        }
+                    }
+                }
+            }
+
+            ThemeStore.set(theme);
         });
     }
 
     function downloadJSON() {
-        const dataStr = JSON.stringify(theme, null, 2);
+        const theme_lowercase = structuredClone(theme);
+
+        for(const key in theme_lowercase) {
+            for (const in_key in theme_lowercase[key]) {
+                theme_lowercase[key][in_key] = theme_lowercase[key][in_key].toLowerCase();
+            }
+        }
+
+        const dataStr = JSON.stringify(theme_lowercase, null, 2);
+
         const blob = new Blob([dataStr], { type: "application/json" });
         const url = URL.createObjectURL(blob);
 
