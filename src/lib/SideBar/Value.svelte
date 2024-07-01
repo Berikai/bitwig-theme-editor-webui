@@ -11,12 +11,22 @@
     ThemeStore.subscribe((_value) => {
         theme = _value;
     });
+
+    const getThemeInfo = () => {
+        let theme_info;
+        try {
+            theme_info = ThemeInfo[selected][value];
+        } catch (e) {
+            theme_info = "";
+        }
+        return theme_info;
+    }
 </script>
 
 <div>
     <section>
         <span id={value}>{value}</span>
-        <span class="info">{ThemeInfo[selected][value]}</span>
+        <span class="info">{getThemeInfo()}</span>
     </section>
     <code style={`background-color: ${theme[selected][value]};`} hidden></code>
     <i><ColorPicker value={value} selected={selected} /></i>

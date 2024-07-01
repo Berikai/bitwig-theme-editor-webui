@@ -1,4 +1,7 @@
 export default {
+    "advanced": {
+        "Timeline Playhead": "The playhead in the timeline while the track is playing.",
+    },
     "window": {
         "Abstract Button Pressed Background": "",
         "Abstract Button Selected Background": "",

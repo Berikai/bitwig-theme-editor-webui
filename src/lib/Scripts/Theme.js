@@ -1,6 +1,9 @@
 import { writable } from 'svelte/store';
 
 export const default_theme = {
+    "advanced": {
+        "Timeline Playhead": "#000000ff"
+    },
     "window": {
         "Abstract Button Pressed Background": "#3b3b3b",
         "Abstract Button Selected Background": "#474747",

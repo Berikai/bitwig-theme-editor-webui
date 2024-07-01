@@ -68,6 +68,7 @@
     <nav>
         <button on:click={() => selected = "window"} style={selected == "window" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Window</button>
         <button on:click={() => selected = "arranger"} style={selected == "arranger" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Arranger</button>
+        <button on:click={() => selected = "advanced"} style={selected == "advanced" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Advanced</button>
     </nav>
     <span>Values</span>
     <input id="search_bar" type="text" placeholder="Search color values" bind:value={searchValue} />
@@ -79,6 +80,11 @@
     <section id="arranger" style={selected != "arranger" ? "display: none;" : ""}>
         {#each Object.keys(theme["arranger"]) as value (value)}
         <Value value={value} selected={"arranger"}/>
+        {/each}
+    </section>
+    <section id="advanced" style={selected != "advanced" ? "display: none;" : ""}>
+        {#each Object.keys(theme["advanced"]) as value (value)}
+        <Value value={value} selected={"advanced"}/>
         {/each}
     </section>
     <nav>
