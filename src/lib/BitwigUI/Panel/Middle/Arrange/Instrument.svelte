@@ -16,7 +16,7 @@
 
 <span class="channels-row" style="--button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};--button-background:{theme["window"]["Button background"]};--button-stroke:{theme["window"]["Button stroke"]};display:flex;justify-content:space-between;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{isSelected ? theme["window"]["Selected Panel body"] : theme["window"]["Panel body"]};">
     <span style="display:flex;">
-        <span class="instrument" style="display:flex;justify-content:flex-start;background-color:{isSelected ? theme["window"]["Selected Panel body"] : theme["window"]["Panel body"]};">
+        <span class="instrument {isSelected ? "selected-inst" : "unselected-inst"}" style="display:flex;justify-content:flex-start;background-color:{isSelected ? theme["window"]["Selected Panel body"] : theme["window"]["Panel body"]};">
             <span style="height:100%;width:6px;background-color:{color};"></span>
             <span style="display:flex;flex-direction:column;width:100%;">
                 <span style="display:flex;justify-content:space-between;width:100%;">
@@ -63,9 +63,9 @@
                         </g>
                     </svg>
                     {/if}
-                    <span style="align-items:center;margin-left:5px;margin-top:3px;display:flex;width:123px;height:13px;background-color:{theme["window"]["Display Background"]};border:2px solid {theme["window"]["Display Background"]};border-radius:3px;overflow:hidden;">
-                        <span style="display:flex;width:52px;height:14px;background-color:{theme["window"]["On"]};opacity:0.3;"></span>
-                        <span style="display:flex;width:1px;height:14px;background-color:{theme["window"]["On"]};opacity:0.7;"></span>
+                    <span class="display-background" style="align-items:center;margin-left:5px;margin-top:3px;display:flex;width:123px;height:13px;background-color:{theme["window"]["Display Background"]};border:2px solid {theme["window"]["Display Background"]};border-radius:3px;overflow:hidden;">
+                        <span class="on" style="display:flex;width:52px;height:14px;background-color:{theme["window"]["On"]};opacity:0.3;"></span>
+                        <span class="on" style="display:flex;width:1px;height:14px;background-color:{theme["window"]["On"]};opacity:0.7;"></span>
                     </span>
                     <span class="button button-background" style="margin-top:3px;margin-left:6px;">
                         <svg width="15px" height="15px" fill={"#ffffff"} style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"><rect x="3" y="3" width="9" height="2"/><rect x="3" y="6.5" width="9" height="1.989"/><rect x="3" y="10" width="9" height="2"/></svg>
@@ -76,12 +76,12 @@
         </span>
     </span>
     <span style="display:flex;">
-        <span style="display:flex;justify-content:center;align-items:center;width:25px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Panel body"]};">
+        <span class="panel-body" style="display:flex;justify-content:center;align-items:center;width:25px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Panel body"]};">
             <svg x="0px" y="0px" width="23px" height="19px" fill={theme["window"]["Normal Toggle Icon"]}>
                 <rect x="7" y="5" width="9" height="9"/>
             </svg>
         </span>
-        <span style="display:flex;justify-content:flex-start;align-items:center;width:85px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Hole (medium)"]};">
+        <span class="hole-medium" style="display:flex;justify-content:flex-start;align-items:center;width:85px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Hole (medium)"]};">
             {#if isRec}
                 <svg x="0px" y="0px" width="23px" height="19px" fill={theme["window"]["Normal Toggle Icon"]}>
                     <circle cx="11.5" cy="9.5" r="5"/>
@@ -92,7 +92,7 @@
                 </svg>
             {/if}
         </span>
-        <span style="display:flex;justify-content:flex-start;align-items:center;width:84px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Hole (medium)"]};box-shadow: inset #202020 -10px 0px 12px -10px;">
+        <span class="hole-medium" style="display:flex;justify-content:flex-start;align-items:center;width:84px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Hole (medium)"]};box-shadow: inset #202020 -10px 0px 12px -10px;">
             {#if isRec}
                 <svg x="0px" y="0px" width="23px" height="19px" fill={theme["window"]["Normal Toggle Icon"]}>
                     <circle cx="11.5" cy="9.5" r="5"/>
@@ -103,7 +103,7 @@
                 </svg>
             {/if}
         </span>
-        <span style="display:flex;justify-content:center;align-items:center;width:23px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
+        <span class="button-in-tree-background" style="display:flex;justify-content:center;align-items:center;width:23px;height:43px;border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
             <svg x="0px" y="0px" width="15px" height="15px" fill={"#696969"}>
                 <rect x="2" y="2" width="11" height="3"/>
                 <rect x="2" y="6" width="11" height="3"/>

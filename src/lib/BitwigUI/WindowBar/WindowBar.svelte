@@ -75,8 +75,8 @@
                 </span>
             </span>
         </span>
-        <span class="normal-button button-active">ADD</span>
-        <span class="normal-button button-active">EDIT</span>
+        <span class="normal-button button-active button-background">ADD</span>
+        <span class="normal-button button-active button-background">EDIT</span>
     </span>
     <span class="reference_version">Bitwig Studio 5.1.9</span>
 </div>

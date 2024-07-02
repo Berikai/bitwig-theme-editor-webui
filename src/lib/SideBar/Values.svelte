@@ -2,6 +2,7 @@
     import Value from "./Value.svelte";
     import { ThemeStore } from "../Scripts/Theme";
     import Contributors from "../Scripts/Contributors";
+    import { selectedValue } from "../Scripts/BindValues";
 
     export let display = "flex";
 
@@ -11,7 +12,11 @@
         theme = value;
     });
 
-    let selected = "window";
+    let selected;
+
+    selectedValue.subscribe((value) => {
+        selected = value;
+    });
 
     let modalState = false;
 
@@ -66,9 +71,9 @@
 
 <aside style="--display-aside:{display};">
     <nav>
-        <button on:click={() => selected = "window"} style={selected == "window" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Window</button>
-        <button on:click={() => selected = "arranger"} style={selected == "arranger" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Arranger</button>
-        <button on:click={() => selected = "advanced"} style={selected == "advanced" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Advanced</button>
+        <button on:click={() => selectedValue.set("window")} style={selected == "window" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Window</button>
+        <button on:click={() => selectedValue.set("arranger")} style={selected == "arranger" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Arranger</button>
+        <button on:click={() => selectedValue.set("advanced")} style={selected == "advanced" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Advanced</button>
     </nav>
     <span>Values</span>
     <input id="search_bar" type="text" placeholder="Search color values" bind:value={searchValue} />

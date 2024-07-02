@@ -15,11 +15,11 @@
 
 <div style="--dark-timeline-background: {theme["arranger"]["Dark Timeline Background"]};--top-level-timeline-header-background: {theme["arranger"]["Top Level Timeline Header Background"]};--hole-dark: {theme["window"]["Hole (dark)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --panel-body: {theme["window"]["Panel body"]}; --active-panel-stroke: {theme["window"]["Active Panel stroke"]};">
     <span class="arrange-row">
-        <span class="channels">
+        <span class="channels hole-dark">
             <span class="upper-channels">
-                <span class="channels-row" style="display:flex;justify-content:space-between;background-color:{theme["window"]["Hole (light)"]};">
+                <span class="channels-row hole-light" style="display:flex;justify-content:space-between;background-color:{theme["window"]["Hole (light)"]};">
                     <span style="display:flex;">
-                        <span style="display:flex;justify-content:center;align-items:center;width:38px;height:100%;background-color:{theme["window"]["Hole (medium)"]};">
+                        <span class="hole-medium" style="display:flex;justify-content:center;align-items:center;width:38px;height:100%;background-color:{theme["window"]["Hole (medium)"]};">
                             <svg width="19px" height="19px" fill={theme["window"]["On"]} style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                                 <g>
                                     <rect x="4" y="6" width="3" height="3"/>
@@ -31,7 +31,7 @@
                                 </g>
                             </svg>
                         </span>
-                        <span style="display:flex;justify-content:center;align-items:center;width:38px;height:100%;background-color:{theme["window"]["Hole (medium)"]};">
+                        <span class="hole-medium" style="display:flex;justify-content:center;align-items:center;width:38px;height:100%;background-color:{theme["window"]["Hole (medium)"]};">
                             <svg x="0px" y="0px" width="19px" height="19px" fill={theme["window"]["On"]} >
                                 <rect x="4" y="6" width="11" height="3"/>
                                 <rect x="4" y="10" width="11" height="3"/>
@@ -39,29 +39,29 @@
                         </span>
                     </span>
                     <span style="display:flex;">
-                        <span style="display:flex;justify-content:center;align-items:center;width:41px;height:37px;border-top:1px solid {theme["window"]["Button stroke"]};border-left:1px solid {theme["window"]["Button stroke"]};background-color:{theme["window"]["Panel body"]};">
+                        <span class="panel-body" style="display:flex;justify-content:center;align-items:center;width:41px;height:37px;border-top:1px solid {theme["window"]["Button stroke"]};border-left:1px solid {theme["window"]["Button stroke"]};background-color:{theme["window"]["Panel body"]};">
                             <svg x="0px" y="0px" width="19px" height="19px" viewBox="0 0 19 19" fill="#ffffff">
                                 <polygon points="12.772,14.632 11.317,11.176 14.373,10.703 7,3.5 7,13.808 9.474,11.952 10.93,15.408 " transform="matrix(1.2614421,0,0,1.2614421,-3.8300949,-2.4150474)" />
                             </svg>
                         </span>
-                        <span style="display:flex;justify-content:center;align-items:center;width:25px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Panel body"]};">
+                        <span class="panel-body" style="display:flex;justify-content:center;align-items:center;width:25px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Panel body"]};">
                             <svg x="0px" y="0px" width="23px" height="19px" fill={theme["window"]["Normal Toggle Icon"]}>
                                 <rect x="7" y="5" width="9" height="9"/>
                             </svg>
                         </span>
-                        <span style="display:flex;justify-content:flex-start;align-items:center;width:85px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
+                        <span class="button-in-tree-background" style="display:flex;justify-content:flex-start;align-items:center;width:85px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
                             <svg x="0px" y="0px" width="23px" height="19px" viewBox="0 0 23 19" fill={theme["window"]["Normal Toggle Icon"]}>
                                 <polygon points="17,9.5 7,15 7,4 "/>
                             </svg>
                             <i>Scene 1</i>
                         </span>
-                        <span style="display:flex;justify-content:flex-start;align-items:center;width:84px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};box-shadow: inset #202020 -10px 0px 12px -10px;">
+                        <span class="button-in-tree-background" style="display:flex;justify-content:flex-start;align-items:center;width:84px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};box-shadow: inset #202020 -10px 0px 12px -10px;">
                             <svg x="0px" y="0px" width="23px" height="19px" viewBox="0 0 23 19" fill={theme["window"]["Normal Toggle Icon"]}>
                                 <polygon points="17,9.5 7,15 7,4 "/>
                             </svg>
                             <i>Scene 2</i>
                         </span>
-                        <span style="display:flex;justify-content:center;align-items:center;width:23px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
+                        <span class="button-in-tree-background" style="display:flex;justify-content:center;align-items:center;width:23px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
                             <svg x="0px" y="0px" width="15px" height="15px" fill={"#696969"}>
                                 <rect x="2" y="2" width="11" height="3"/>
                                 <rect x="2" y="6" width="11" height="3"/>
@@ -75,7 +75,7 @@
                 </span>
                 <Instrument name="Inst 1" type="i" color="#FF5706" isSelected={true} isRec={true}/>
                 <Instrument name="Audio 2" type="a" color="#D99D10"/>
-                <span class="channels-row" style="display:flex;justify-content:space-between;border-top:1px solid {theme["window"]["Hole (dark)"]};">
+                <span class="channels-row hole-dark" style="display:flex;justify-content:space-between;border-top:1px solid {theme["window"]["Hole (dark)"]};">
                     <svg width="13px" height="13px" viewBox="0 0 13 13" fill="#8f8f8f" style="margin-top: 4px;margin-left: 94px;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
                         <path d="M5.5,2l0,3.5l-3.5,0l0,2l3.5,0l0,3.5l2,0l0,-3.5l3.5,0l0,-2l-3.5,0l0,-3.5l-2,0Z" style="fill-rule:nonzero;"/>
                     </svg>
@@ -87,16 +87,16 @@
             </span>
         </span>
         <span style="display:flex;width:10px;height:100%;background-color:{theme["window"]["Hole (light)"]};"></span>
-        <span class="arranger">
-            <span style="display: flex;width:100%;height:39px;background-color:{theme["arranger"]["Top Level Timeline Header Background"]};"></span>
+        <span class="arranger dark-timeline-background">
+            <span class="top-level-timeline-header-background" style="display: flex;width:100%;height:39px;background-color:{theme["arranger"]["Top Level Timeline Header Background"]};"></span>
             <span style="display: flex;justify-content:space-between;flex-direction:column;height:calc(100% - 39px);">
                 <span style="display: flex;flex-direction:column;">
-                    <span style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid #00000060;">
+                    <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid #00000060;">
                         {#each rows as row}
                         <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
                         {/each}
                     </span>
-                    <span style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};">
+                    <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};">
                         {#each rows as row}
                         <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
                         {/each}
@@ -108,12 +108,12 @@
                     {/each}
                 </span>
                 <span style="display: flex;flex-direction:column;">
-                    <span style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid #00000060;">
+                    <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid #00000060;">
                         {#each rows as row}
                         <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
                         {/each}
                     </span>
-                    <span style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};">
+                    <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};">
                         {#each rows as row}
                         <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
                         {/each}
