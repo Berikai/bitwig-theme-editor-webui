@@ -6,7 +6,7 @@
     import Pickr from "@simonwep/pickr";
     import "@simonwep/pickr/dist/themes/monolith.min.css";
 
-    import { ThemeStore } from "../Scripts/Theme";
+    import { default_theme, ThemeStore } from "../Scripts/Theme";
   
     let pickr;
   
@@ -20,6 +20,9 @@
     });
 
     onMount(() => {
+        // @ts-ignore
+        Pickr.I18N_DEFAULTS["btn:cancel"] = "Reset" // Modified to be the reset button
+
         pickr = Pickr.create({
             el: ".color-picker",
             theme: "monolith", // 'classic', 'monolith', 'nano'
@@ -27,7 +30,7 @@
       
             components: {
               preview: false,
-              opacity: false,
+              opacity: theme[selected][value].length == 9 ? true : false,
               hue: true,
       
               interaction: {
@@ -35,9 +38,19 @@
                 rgba: false,
                 hsla: false,
                 input: true,
-                save: false
+                save: false,
+                cancel: true // Modified to be the reset button
               }
             }
+        });
+
+        pickr.on("cancel", (color, instance) => {
+            pickr.setColor(default_theme[selected][value]);
+
+            ThemeStore.update((_value) => {
+                _value[selected][value] = default_theme[selected][value];
+                return _value;
+            });
         });
   
         pickr.on("change", (color, instance) => {
