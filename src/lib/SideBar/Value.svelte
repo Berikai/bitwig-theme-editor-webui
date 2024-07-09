@@ -20,7 +20,7 @@
             theme_info = "";
         }
         return theme_info;
-    }
+    };
 </script>
 
 <div>
