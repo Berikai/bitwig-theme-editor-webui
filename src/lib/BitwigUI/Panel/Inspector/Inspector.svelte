@@ -14,7 +14,7 @@
     });
 </script>
 
-<div style="--rec: {theme["window"]["Record button color"]}; --display-background: {theme["window"]["Display Background"]}; --hole-light: {theme["window"]["Hole (light)"]}; --hole-medium: {theme["window"]["Hole (medium)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
+<div style="--light-text: {theme["window"]["Light Text"]}; --dark-text: {theme["window"]["Dark Text"]}; --rec: {theme["window"]["Record button color"]}; --display-background: {theme["window"]["Display Background"]}; --hole-light: {theme["window"]["Hole (light)"]}; --hole-medium: {theme["window"]["Hole (medium)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --button-stroke: {theme["window"]["Button stroke"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")};">
     <span id="insp_title" class="title">INSTRUMENT TRACK</span>
     <span class="sub-title display-background">Inst 1</span>
     <span class="color-palette display-background">
@@ -80,7 +80,7 @@
             All ins
         </span>
         <span class="send-button button-background">
-            <svg width="11px" height="11px" fill={"#cfcfcf"} viewBox="0 0 11 11" style="margin-left:5px;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+            <svg width="11px" height="11px" fill={theme["window"]["Light Text"]} viewBox="0 0 11 11" style="margin-left:5px;fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
                 <g>
                     <path d="M1.59,1l-0.684,0l0,9l0.692,0l0,-5.857l1.038,4.63l0.693,0l0,-4.369l1.054,3.141l0.676,0l0,-2.704l1.075,1.886l0.656,0l0,-1.664l1.14,1.078l0.591,-0.315l1.385,0.001l0,-0.654l-2.022,0l-1.194,-0.9l-0.592,0l0,1.068l-1.075,-1.886l-0.656,0l0,1.914l-1.054,-3.142l-0.677,0l0,3.402l-1.046,-4.629Z" style="fill-rule:nonzero;"/>
                 </g>
@@ -95,8 +95,8 @@
         <span class="mixer-half">
             <span class="mixer-button">
                 <span class="mixer-button-r rec">
-                    <svg class="circle" width="10px" height="10px">
-                        <circle cx="5" cy="5" r="5" fill="black" />
+                    <svg class="circle dark-text" width="10px" height="10px">
+                        <circle cx="5" cy="5" r="5" fill={theme["window"]["Dark Text"]} />
                     </svg>
                 </span>
                 <span class="mixer-button-n button-background">S</span>
@@ -159,6 +159,7 @@
         padding-left: 3px;
         font-style: italic;
         border-bottom: 2px solid var(--panel-stroke);
+        color: var(--light-text);
     }
     .color-palette {
         display: flex;
@@ -195,6 +196,7 @@
         font-size: 12px;
         background-color: var(--hole-light);
         border-bottom: 2px solid var(--panel-stroke);
+        color: var(--light-text);
     }
     .channel-area {
         display: flex;
@@ -202,7 +204,7 @@
         height: 53px;
         background-color: var(--hole-light);
         border-bottom: 2px solid var(--panel-stroke);
-
+        color: var(--light-text);
     }
     .channel-row {
         display: flex;
@@ -234,7 +236,7 @@
         width: 102px;
         font-size: 11px;
         border-radius: 3px;
-        color: black;
+        color: var(--dark-text);
         overflow: hidden;
     }
     .channel-on-right {
@@ -315,6 +317,7 @@
         border: 1px solid var(--button-stroke);
         border-radius: 5px;
         font-size: 11px;
+        color: var(--light-text);
     }
     .mixer-area {
         display: flex;
@@ -348,6 +351,7 @@
         font-weight: bolder;
         background-image: linear-gradient(var(--button-gradient), var(--button-background));
         border-left: 1px solid var(--button-stroke);
+        color: var(--light-text);
     }
     .mixer-button-r {
         display: flex;

@@ -177,6 +177,29 @@ const bindInstruments = () => {
     });
 }
 
+const bindTexts = () => {
+    Array.from(document.getElementsByClassName("light-text")).forEach((element) => {
+        element.addEventListener("mousedown", (e) => {
+            selectedValue.set("window")
+            scrollToValue(e, "Light Text")
+        });
+    });
+
+    Array.from(document.getElementsByClassName("dark-text")).forEach((element) => {
+        element.addEventListener("mousedown", (e) => {
+            selectedValue.set("window")
+            scrollToValue(e, "Dark Text")
+        });
+    });
+
+    Array.from(document.getElementsByClassName("normal-toggle-icon")).forEach((element) => {
+        element.addEventListener("mousedown", (e) => {
+            selectedValue.set("window")
+            scrollToValue(e, "Normal Toggle Icon")
+        });
+    });
+}
+
 export const bindValues = () => {
     bindWindowBar();
     bindTopBar();
@@ -186,4 +209,5 @@ export const bindValues = () => {
     bindBottomBar();
     bindArranger();
     bindInstruments();
+    bindTexts();
 }

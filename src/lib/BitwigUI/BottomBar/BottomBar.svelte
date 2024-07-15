@@ -18,7 +18,7 @@
             </svg>
         </span>
         <span class="seperator">
-            <svg width="20" height="20" viewBox="0 0 20 20">
+            <svg width="20" height="20">
                 <line x1="10" y1="0" x2="10" y2="20" stroke="#888888" stroke-width="1" />
             </svg>
         </span>
@@ -28,7 +28,7 @@
             <i>EDIT</i>
         </span>
         <span class="seperator">
-            <svg width="20" height="20" viewBox="0 0 20 20">
+            <svg width="20" height="20">
                 <line x1="10" y1="0" x2="10" y2="20" stroke="#888888" stroke-width="1" />
             </svg>
         </span>
@@ -113,7 +113,7 @@
             </svg>
         </span>
         <span class="seperator">
-            <svg width="20" height="20" viewBox="0 0 20 20">
+            <svg width="20" height="20">
                 <line x1="10" y1="0" x2="10" y2="20" stroke="#888888" stroke-width="1" />
             </svg>
         </span>

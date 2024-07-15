@@ -16,24 +16,24 @@
     });
 </script>
 
-<div id="panel" class="panel-body" style="--hitech-background: {theme["window"]["Hitech background"]}; --hitech-on: {theme["window"]["Hitech on"]}; --button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
+<div id="panel" class="panel-body" style="--light-text: {theme["window"]["Light Text"]}; --dark-text: {theme["window"]["Dark Text"]}; --hitech-background: {theme["window"]["Hitech background"]}; --hitech-on: {theme["window"]["Hitech on"]}; --button-stroke: {theme["window"]["Button stroke"]}; background-color: {theme["window"]["Panel body"]}; --button-background: {theme["window"]["Button background"]}; --button-gradient: {(theme["window"]["Button background"].length == 9 ? theme["window"]["Button background"].substring(0, 7) + "D0" : "#767676")}; --on: {theme["window"]["On"]}; --rec: {theme["window"]["Record button color"]};">
     <span class="window-panel-main">    
         <span class="normal-button button-active button-background">FILE</span>
         <span class="play-button-group">
             <span class="play-button button-active button-background">PLAY</span><i></i>
             <span id="play" class="play-button button-background">
-                <svg width="24" fill="#ffffff" viewBox="0 0 24 24">
+                <svg class="light-text" width="24" fill={theme["window"]["Light Text"]} viewBox="0 0 24 24">
                     <path stroke-width="1.5" d="M18.25 12L5.75 5.75V18.25L18.25 12Z"></path>
                 </svg>
             </span><i></i>
             <span class="play-button button-active button-background">
-                <svg width="11" height="11">
-                    <rect width="11" height="11" fill="#ffffff" />
+                <svg class="light-text" width="11" height="11">
+                    <rect width="11" height="11" fill={theme["window"]["Light Text"]} />
                 </svg>
             </span><i></i>
             <span id="rec" class="play-button button-background">
-                <svg width="13" height="13">
-                    <circle cx="6.5" cy="6.5" r="6.5" fill="#ffffff" />
+                <svg class="light-text" width="13" height="13">
+                    <circle cx="6.5" cy="6.5" r="6.5" fill={theme["window"]["Light Text"]} />
                 </svg>
             </span>
         </span>
@@ -126,7 +126,7 @@
         width: 39px;
         height: 35px;
         background-image: linear-gradient(var(--button-gradient), var(--button-background));
-        color: white;
+        color: var(--light-text);
         font-size: 11px;
 
         margin-top: 5px;
@@ -146,7 +146,7 @@
         width: 39px;
         height: 35px;
         background-image: linear-gradient(var(--button-gradient), var(--button-background));
-        color: white;
+        color: var(--light-text);
         font-size: 11px;
 
         display: flex;

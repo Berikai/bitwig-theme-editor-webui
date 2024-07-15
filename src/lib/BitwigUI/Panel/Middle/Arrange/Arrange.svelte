@@ -13,7 +13,7 @@
     let rows = Array.from({ length: count }, (_, i) => i);
 </script>
 
-<div style="--dark-timeline-background: {theme["arranger"]["Dark Timeline Background"]};--top-level-timeline-header-background: {theme["arranger"]["Top Level Timeline Header Background"]};--hole-dark: {theme["window"]["Hole (dark)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --panel-body: {theme["window"]["Panel body"]}; --active-panel-stroke: {theme["window"]["Active Panel stroke"]};">
+<div style="--light-text: {theme["window"]["Light Text"]};--dark-timeline-background: {theme["arranger"]["Dark Timeline Background"]};--top-level-timeline-header-background: {theme["arranger"]["Top Level Timeline Header Background"]};--hole-dark: {theme["window"]["Hole (dark)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --panel-body: {theme["window"]["Panel body"]}; --active-panel-stroke: {theme["window"]["Active Panel stroke"]};">
     <span class="arrange-row">
         <span class="channels hole-dark">
             <span class="upper-channels">
@@ -40,23 +40,23 @@
                     </span>
                     <span style="display:flex;">
                         <span class="panel-body" style="display:flex;justify-content:center;align-items:center;width:41px;height:37px;border-top:1px solid {theme["window"]["Button stroke"]};border-left:1px solid {theme["window"]["Button stroke"]};background-color:{theme["window"]["Panel body"]};">
-                            <svg x="0px" y="0px" width="19px" height="19px" viewBox="0 0 19 19" fill="#ffffff">
+                            <svg class="light-text" x="0px" y="0px" width="19px" height="19px" viewBox="0 0 19 19" fill={theme["window"]["Light Text"]}>
                                 <polygon points="12.772,14.632 11.317,11.176 14.373,10.703 7,3.5 7,13.808 9.474,11.952 10.93,15.408 " transform="matrix(1.2614421,0,0,1.2614421,-3.8300949,-2.4150474)" />
                             </svg>
                         </span>
                         <span class="panel-body" style="display:flex;justify-content:center;align-items:center;width:25px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Panel body"]};">
-                            <svg x="0px" y="0px" width="23px" height="19px" fill={theme["window"]["Normal Toggle Icon"]}>
+                            <svg class="normal-toggle-icon" x="0px" y="0px" width="23px" height="19px" fill={theme["window"]["Normal Toggle Icon"]}>
                                 <rect x="7" y="5" width="9" height="9"/>
                             </svg>
                         </span>
                         <span class="button-in-tree-background" style="display:flex;justify-content:flex-start;align-items:center;width:85px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};">
-                            <svg x="0px" y="0px" width="23px" height="19px" viewBox="0 0 23 19" fill={theme["window"]["Normal Toggle Icon"]}>
+                            <svg class="normal-toggle-icon" x="0px" y="0px" width="23px" height="19px" viewBox="0 0 23 19" fill={theme["window"]["Normal Toggle Icon"]}>
                                 <polygon points="17,9.5 7,15 7,4 "/>
                             </svg>
                             <i>Scene 1</i>
                         </span>
                         <span class="button-in-tree-background" style="display:flex;justify-content:flex-start;align-items:center;width:84px;height:37px;border-top:1px solid {theme["window"]["Hole (dark)"]};border-left:1px solid {theme["window"]["Hole (dark)"]};background-color:{theme["window"]["Button in tree background"]};box-shadow: inset #202020 -10px 0px 12px -10px;">
-                            <svg x="0px" y="0px" width="23px" height="19px" viewBox="0 0 23 19" fill={theme["window"]["Normal Toggle Icon"]}>
+                            <svg class="normal-toggle-icon" x="0px" y="0px" width="23px" height="19px" viewBox="0 0 23 19" fill={theme["window"]["Normal Toggle Icon"]}>
                                 <polygon points="17,9.5 7,15 7,4 "/>
                             </svg>
                             <i>Scene 2</i>
@@ -140,6 +140,7 @@
     }
     i {
         font-size: 11px;
+        color: var(--light-text);
     }
     .arrange-row {
         display: flex;

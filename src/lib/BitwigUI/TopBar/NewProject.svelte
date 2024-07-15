@@ -1,11 +1,21 @@
-<div>
+<script>
+    import { ThemeStore } from "../../Scripts/Theme";
+    
+    let theme;
+
+    ThemeStore.subscribe((_value) => {
+        theme = _value;
+    });
+</script>
+
+<div style="--light-text: {theme["window"]["Light Text"]};">
     <svg width="6" height="6" viewBox="0 0 6 6">
         <rect width="10" height="10" fill="#c3c3c3" />
     </svg>
     <span>New 1*</span>
-    <svg width="7" height="7" viewBox="0 0 7 7">
-        <line x1="0" y1="0" x2="7" y2="7" stroke="#c3c3c3" />
-        <line x1="0" y1="7" x2="7" y2="0" stroke="#c3c3c3" />
+    <svg width="7" height="7">
+        <line x1="0" y1="0" x2="7" y2="7" stroke={theme["window"]["Light Text"]} />
+        <line x1="0" y1="7" x2="7" y2="0" stroke={theme["window"]["Light Text"]} />
     </svg>
 </div>
 
@@ -35,7 +45,7 @@
 
     span {
         font-size: 11px;
-        color: #c3c3c3;
+        color: var(--light-text);
         margin-left: 9px;
         margin-right: 5px;
     }

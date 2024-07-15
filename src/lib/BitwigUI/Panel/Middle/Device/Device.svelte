@@ -8,7 +8,7 @@
     });
 </script>
 
-<div id="device-bg" style="--hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --device-header: {theme["window"]["Device Header"]};">
+<div id="device-bg" style="--light-text: {theme["window"]["Light Text"]}; --hole-dark: {theme["window"]["Hole (dark)"]}; --panel-body: {theme["window"]["Panel body"]}; --panel-stroke: {theme["window"]["Panel stroke"]}; --device-header: {theme["window"]["Device Header"]};">
     <span class="column">
         <span class="line" style="background-color: #808080;"></span>
         <i class="rotate">PROJECT</i>
@@ -30,6 +30,9 @@
         border: 2px solid var(--panel-stroke);
         margin-top: 3px;
         background-color: var(--hole-dark);
+    }
+    i {
+        color: var(--light-text);
     }
     .column {
         display: flex;
