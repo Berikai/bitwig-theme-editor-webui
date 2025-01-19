@@ -132,12 +132,20 @@ const bindBottomBar = () => {
 }
 
 const bindArranger = () => {
-    Array.from(document.getElementsByClassName("top-level-timeline-header-background")).forEach((element) => {
+    Array.from(document.getElementsByClassName("dark-timeline-header-background")).forEach((element) => {
         element.addEventListener("mousedown", (e) => {
             selectedValue.set("arranger")
-            scrollToValue(e, "Top Level Timeline Header Background")
+            scrollToValue(e, "Dark Timeline Header Background")
         });
     });
+
+    Array.from(document.getElementsByClassName("light-timeline-header-background")).forEach((element) => {
+        element.addEventListener("mousedown", (e) => {
+            selectedValue.set("arranger")
+            scrollToValue(e, "Light Timeline Header Background")
+        });
+    });
+
 
     Array.from(document.getElementsByClassName("light-timeline-background")).forEach((element) => {
         element.addEventListener("mousedown", (e) => {
@@ -150,6 +158,13 @@ const bindArranger = () => {
         element.addEventListener("mousedown", (e) => {
             selectedValue.set("arranger")
             scrollToValue(e, "Dark Timeline Background")
+        });
+    });
+
+    Array.from(document.getElementsByClassName("irrelevant-timeline-background")).forEach((element) => {
+        element.addEventListener("mousedown", (e) => {
+            selectedValue.set("arranger")
+            scrollToValue(e, "Irrelevant Timeline Background")
         });
     });
 

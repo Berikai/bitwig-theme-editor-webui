@@ -9,11 +9,19 @@
         theme = _value;
     });
 
-    let count = 66;
+    let count = 36;
     let rows = Array.from({ length: count }, (_, i) => i);
+    let selectedRows = {start: 5, end: 20};
+
+    const addTransparency = (color, alpha) => {
+        const colorRGB = color.substring(0, 7);
+        const colorAlpha = color.length === 9 ? color.substring(7) : 'FF';
+        alpha = Math.floor(parseInt(colorAlpha, 16) / alpha).toString(16).padStart(2, '0');
+        return `${colorRGB}${alpha}`;
+    };
 </script>
 
-<div style="--light-text: {theme["window"]["Light Text"]};--dark-timeline-background: {theme["arranger"]["Dark Timeline Background"]};--top-level-timeline-header-background: {theme["arranger"]["Top Level Timeline Header Background"]};--hole-dark: {theme["window"]["Hole (dark)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --panel-body: {theme["window"]["Panel body"]}; --active-panel-stroke: {theme["window"]["Active Panel stroke"]};">
+<div style="--light-text: {theme["window"]["Light Text"]};--dark-timeline-background: {theme["arranger"]["Dark Timeline Background"]};--dark-timeline-header-background: {theme["arranger"]["Dark Timeline Header Background"]};--hole-dark: {theme["window"]["Hole (dark)"]}; --hole-light: {theme["window"]["Hole (light)"]}; --panel-body: {theme["window"]["Panel body"]}; --active-panel-stroke: {theme["window"]["Active Panel stroke"]};">
     <span class="arrange-row">
         <span class="channels hole-dark">
             <span class="upper-channels">
@@ -88,34 +96,37 @@
         </span>
         <span style="display:flex;width:10px;height:100%;background-color:{theme["window"]["Hole (light)"]};"></span>
         <span class="arranger dark-timeline-background">
-            <span class="top-level-timeline-header-background" style="display: flex;width:100%;height:39px;background-color:{theme["arranger"]["Top Level Timeline Header Background"]};"></span>
+            <span class="dark-timeline-header-background" style="display: flex;width:100%;height:25px;background-color:{theme["arranger"]["Dark Timeline Header Background"]};"></span>
+            <span class="light-timeline-header-background" style="display: flex;flex-direction: row;align-items:center;height:14px;background-color:{theme["arranger"]["Light Timeline Header Background"]};">
+                <span style="display:flex;margin-left:84px;width:271px;height:10px;border:1px solid #CCCCCC;background-color: #AAAAAA;"></span>
+            </span>
             <span style="display: flex;justify-content:space-between;flex-direction:column;height:calc(100% - 39px);">
                 <span style="display: flex;flex-direction:column;">
-                    <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid #00000060;">
+                    <span class="light-timeline-background" style="display: flex;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid {theme["arranger"]["Dark Timeline Background"]};">
                         {#each rows as row}
-                        <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
+                        <span class="{row >= selectedRows.start && row <= selectedRows.end ? "light-timeline-background" : "irrelevant-timeline-background"}" style="background-color:{row >= selectedRows.start && row <= selectedRows.end ? theme["arranger"]["Light Timeline Background"] : theme["arranger"]["Irrelevant Timeline Background"]};width:16px;height:100%;border-right:{row % 4 == 0 ? "1px solid " + theme["arranger"]["Timeline Primary Grid"] : "0.5px solid " + addTransparency(theme["arranger"]["Timeline Primary Grid"], 3)};"></span>
                         {/each}
                     </span>
                     <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};">
                         {#each rows as row}
-                        <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
+                        <span class="{row >= selectedRows.start && row <= selectedRows.end ? "light-timeline-background" : "irrelevant-timeline-background"}" style="background-color:{row >= selectedRows.start && row <= selectedRows.end ? theme["arranger"]["Light Timeline Background"] : theme["arranger"]["Irrelevant Timeline Background"]};width:16px;height:100%;border-right:{row % 4 == 0 ? "1px solid " + theme["arranger"]["Timeline Primary Grid"] : "0.5px solid " + addTransparency(theme["arranger"]["Timeline Primary Grid"], 3)};"></span>
                         {/each}
                     </span>
                 </span>
                 <span style="display:flex;height:100%">
                     {#each rows as row}
-                    <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
+                    <span style=";width:16px;height:100%;border-right:{row % 4 == 0 ? "1px solid " + theme["arranger"]["Timeline Primary Grid"] : "0.5px solid " + addTransparency(theme["arranger"]["Timeline Primary Grid"], 3)};"></span>
                     {/each}
                 </span>
                 <span style="display: flex;flex-direction:column;">
                     <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};border-bottom:1px solid #00000060;">
                         {#each rows as row}
-                        <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
+                        <span class="{row >= selectedRows.start && row <= selectedRows.end ? "light-timeline-background" : "irrelevant-timeline-background"}" style="background-color:{row >= selectedRows.start && row <= selectedRows.end ? theme["arranger"]["Light Timeline Background"] : theme["arranger"]["Irrelevant Timeline Background"]};width:16px;height:100%;border-right:{row % 4 == 0 ? "1px solid " + theme["arranger"]["Timeline Primary Grid"] : "0.5px solid " + addTransparency(theme["arranger"]["Timeline Primary Grid"], 3)};"></span>
                         {/each}
                     </span>
                     <span class="light-timeline-background" style="display: flex;width:100%;height:43px;background-color:{theme["arranger"]["Light Timeline Background"]};">
                         {#each rows as row}
-                        <span style="height:100%;margin-left:16px;border-right:{row % 4 == 0 ? "1px solid #00000080" : "0.5px solid #00000040"};"></span>
+                        <span class="{row >= selectedRows.start && row <= selectedRows.end ? "light-timeline-background" : "irrelevant-timeline-background"}" style="background-color:{row >= selectedRows.start && row <= selectedRows.end ? theme["arranger"]["Light Timeline Background"] : theme["arranger"]["Irrelevant Timeline Background"]};width:16px;height:100%;border-right:{row % 4 == 0 ? "1px solid " + theme["arranger"]["Timeline Primary Grid"] : "0.5px solid " + addTransparency(theme["arranger"]["Timeline Primary Grid"], 3)};"></span>
                         {/each}
                     </span>
                 </span>
@@ -152,8 +163,8 @@
         background-color: var(--dark-timeline-background);
         width: 100%;
         height: calc(100% - 1px);
-        border-left: 1px solid var(--top-level-timeline-header-background);
-        border-bottom: 1px solid var(--top-level-timeline-header-background);
+        /*border-left: 1px solid var(--dark-timeline-header-background);*/
+        /*border-bottom: 1px solid var(--dark-timeline-header-background);*/
     }
     .channels {
         display: flex;
