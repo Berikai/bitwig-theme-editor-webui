@@ -32,18 +32,29 @@
     });
 </script>
 
-<div id="bitwig" style="{showReference ? `background-image: url(${Reference});` : ""} background-color: {theme["window"]["Window background"]}; zoom: {scale}%;">
-    <TopBar />
-    <WindowBar />
-    <span>
-        <Inspector />
-        <Middle />
-        <Right />
-    </span>
-    <Bottom />
+<div class="scaler" style="transform: scale({scale/100}); {scale > 100 ? "transform-origin: 0 0;" : ""}">
+    <div id="bitwig" style="{showReference ? `background-image: url(${Reference});` : ""} background-color: {theme["window"]["Window background"]};"> <!--  zoom: {scale}%;" -->
+        <TopBar />
+        <WindowBar />
+        <span>
+            <Inspector />
+            <Middle />
+            <Right />
+        </span>
+        <Bottom />
+    </div>
 </div>
 
 <style>
+    .scaler {
+        --content-padding: 50px;
+        padding: var(--content-padding);
+    }
+
+    #bitwig {
+        box-shadow: #202020 0px 0px 15px;
+    }
+
     div {
         --width: 1228px;
         --height: 768px;
@@ -56,7 +67,6 @@
         /*margin-top: max(var(--top-margin), calc(var(--top-margin) + (100vh - var(--height)) / 6)); /* Center vertically */
         width: var(--width);
         height: var(--height);
-        box-shadow: #202020 0px 0px 15px;
         cursor: pointer;
     }
     span {
