@@ -178,7 +178,7 @@
 
         font-size: 14px;
         font-weight: 500;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: sans-serif;
         letter-spacing: 1px;
 
         background-color: #1f1f1f;
