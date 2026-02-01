@@ -1,12 +1,46 @@
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, "Segoe UI", Roboto, "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+    /* Color Palette */
+    --color-bg-primary: #181818;
+    --color-bg-secondary: #1E1E1E;
+    --color-bg-tertiary: #2C2C2C;
+    --color-accent: #FF8713;
+    --color-accent-hover: #ff9f40;
+    --color-text-primary: #E0E0E0;
+    --color-text-secondary: #A0A0A0;
+    --color-border: #333333;
+    --color-success: #4CAF50;
+    --color-error: #F44336;
+    
+    /* Sidebar Highlights (Darker for better text contrast) */
+    --color-highlight-selection: #1b5e20; /* Dark Green */
+    --color-highlight-search: #e65100; /* Dark Orange */
+
+    /* Typography */
+    --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+    /* Spacing & Layout */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --topbar-height: 56px;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+
+    font-family: var(--font-primary);
     line-height: 1.5;
     font-weight: 400;
     
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    color-scheme: dark;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;

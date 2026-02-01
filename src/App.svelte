@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+    import { onMount } from "svelte";
     import Content from "./lib/Content.svelte";
     import Sidebar from "./lib/SideBar/SideBar.svelte";
     import Topbar from "./lib/TopBar/TopBar.svelte";
@@ -32,21 +32,22 @@
         overflow-y: hidden;
     }
     div {
-        --topbar-height: 40px;
         position: relative;
         display: flex;
         flex-direction: row;
         height: calc(100% - var(--topbar-height));
     }
     @media only screen and (max-width: 349px) {
-        main { display: flex; }
-        .smallscreen { 
+        main {
+            display: flex;
+        }
+        .smallscreen {
             position: absolute;
             top: 0;
             left: 0;
             display: flex;
-            height: calc(100vh - 2*10px);
-            width: calc(100vw - 2*10px);
+            height: calc(100vh - 2 * 10px);
+            width: calc(100vw - 2 * 10px);
             flex-direction: column;
             padding: 10px;
             justify-content: center;
@@ -58,6 +59,8 @@
         }
     }
     @media only screen and (min-width: 350px) {
-        .smallscreen { display: none; }
+        .smallscreen {
+            display: none;
+        }
     }
 </style>

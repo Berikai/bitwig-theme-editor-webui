@@ -22,86 +22,141 @@
 
     let searchValue = "";
 
-    function search (searchValue, selected) {
+    function search(searchValue, selected) {
         const values = document.querySelector(`#${selected}`);
 
-        if(values == null) {
+        if (values == null) {
             return;
-        } 
+        }
 
-        const allElements = values.querySelectorAll('*');
+        const allElements = values.querySelectorAll("*");
         // Convert NodeList to array
         const allElementsArray = Array.from(allElements);
         // TODO: Search by sorting!
 
         let isAccurateFound = false;
-        for (let i = allElementsArray.length-1; i >= 0; i--) {
+        for (let i = allElementsArray.length - 1; i >= 0; i--) {
             const element = allElementsArray[i];
 
-            if(searchValue == "" && element.tagName == "DIV") {
+            if (searchValue == "" && element.tagName == "DIV") {
                 // @ts-ignore
-                element.style.backgroundColor = 'whitesmoke';
+                element.style.backgroundColor = "";
                 continue;
             }
 
-            if (element.id.toLowerCase() === searchValue.toLowerCase() && !isAccurateFound) {
+            if (
+                element.id.toLowerCase() === searchValue.toLowerCase() &&
+                !isAccurateFound
+            ) {
                 // @ts-ignore
-                element.parentElement.parentElement.style.backgroundColor = 'lime';
-                element.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                element.parentElement.parentElement.style.backgroundColor =
+                    "var(--color-highlight-selection)"; // Use variable
+                element.parentElement.parentElement.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                });
                 isAccurateFound = true;
                 continue;
             }
-            
-            if (element.textContent.toLowerCase().includes(searchValue.toLowerCase()) && element.tagName == "DIV") {
+
+            if (
+                element.textContent
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase()) &&
+                element.tagName == "DIV"
+            ) {
                 if (!isAccurateFound) {
                     // @ts-ignore
-                    element.style.backgroundColor = 'yellow';
-                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    element.style.backgroundColor =
+                        "var(--color-highlight-search)"; // Use variable
+                    element.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                    });
                 }
             } else if (element.tagName == "DIV") {
                 // @ts-ignore
-                element.style.backgroundColor = 'whitesmoke';
+                element.style.backgroundColor = "";
             }
         }
     }
 
     $: search(searchValue, selected);
-
 </script>
 
-<aside style="--display-aside:{display};">
+<aside style="--display-aside:{display};" class:modal-open={modalState}>
     <nav>
-        <button on:click={() => selectedValue.set("window")} style={selected == "window" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Window</button>
-        <button on:click={() => selectedValue.set("arranger")} style={selected == "arranger" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Arranger</button>
-        <button on:click={() => selectedValue.set("advanced")} style={selected == "advanced" ? `border-bottom: 3px solid ${theme["window"]["On"]};` : ""}>Advanced</button>
+        <button
+            on:click={() => selectedValue.set("window")}
+            style={selected == "window"
+                ? `border-bottom: 3px solid ${theme["window"]["On"]};`
+                : ""}>Window</button
+        >
+        <button
+            on:click={() => selectedValue.set("arranger")}
+            style={selected == "arranger"
+                ? `border-bottom: 3px solid ${theme["window"]["On"]};`
+                : ""}>Arranger</button
+        >
+        <button
+            on:click={() => selectedValue.set("advanced")}
+            style={selected == "advanced"
+                ? `border-bottom: 3px solid ${theme["window"]["On"]};`
+                : ""}>Advanced</button
+        >
     </nav>
     <span>Values</span>
-    <input id="search_bar" type="text" placeholder="Search color values" bind:value={searchValue} />
+    <input
+        id="search_bar"
+        type="text"
+        placeholder="Search color values"
+        bind:value={searchValue}
+    />
     <section id="window" style={selected != "window" ? "display: none;" : ""}>
         {#each Object.keys(theme["window"]) as value (value)}
-        <Value value={value} selected={"window"}/>
+            <Value {value} selected={"window"} />
         {/each}
     </section>
-    <section id="arranger" style={selected != "arranger" ? "display: none;" : ""}>
+    <section
+        id="arranger"
+        style={selected != "arranger" ? "display: none;" : ""}
+    >
         {#each Object.keys(theme["arranger"]) as value (value)}
-        <Value value={value} selected={"arranger"}/>
+            <Value {value} selected={"arranger"} />
         {/each}
     </section>
-    <section id="advanced" style={selected != "advanced" ? "display: none;" : ""}>
+    <section
+        id="advanced"
+        style={selected != "advanced" ? "display: none;" : ""}
+    >
         {#each Object.keys(theme["advanced"]) as value (value)}
-        <Value value={value} selected={"advanced"}/>
+            <Value {value} selected={"advanced"} />
         {/each}
     </section>
     <nav>
-        <a target=”_blank” href="https://docs.google.com/spreadsheets/d/1iDRYxo2RMPbe8ldjIJqW2GKF_mb1Ldy4Fg6RKudc5jI/edit?gid=1944421253#gid=1944421253">Spreadsheet</a>
-        <button on:click={() => modalState = true}>Credits</button>
+        <a
+            target="”_blank”"
+            href="https://docs.google.com/spreadsheets/d/1iDRYxo2RMPbe8ldjIJqW2GKF_mb1Ldy4Fg6RKudc5jI/edit?gid=1944421253#gid=1944421253"
+            >Spreadsheet</a
+        >
+        <button on:click={() => (modalState = true)}>Credits</button>
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="modal" style={modalState ? "display: flex;" : "display:none;"} on:click={() => modalState = false}>
+        <div
+            class="modal"
+            style={modalState ? "display: flex;" : "display:none;"}
+            on:click={() => (modalState = false)}
+        >
             <div class="modal-box">
                 <h1>Credits</h1>
-                <p>This theme editor wouldn't have been possible without the incredible efforts and support from the Bitwig community.</p>
-                <p>A special big thank you to the ones who contributed in finding which color values influence various UI elements.</p>
+                <p>
+                    This theme editor wouldn't have been possible without the
+                    incredible efforts and support from the Bitwig community.
+                </p>
+                <p>
+                    A special big thank you to the ones who contributed in
+                    finding which color values influence various UI elements.
+                </p>
                 <ul>
                     {#each Contributors["theme_elements"] as contributor}
                         <li>{contributor}</li>
@@ -114,72 +169,84 @@
 
 <style>
     aside {
-        display: var(--display-aside);  
+        display: var(--display-aside);
         flex-direction: column;
         height: 100%;
         width: 100%;
-        background-color: gray;
+        background-color: var(--color-bg-secondary);
         z-index: 2;
+    }
+    aside.modal-open {
+        z-index: 10;
     }
     nav {
         display: flex;
         flex-direction: row;
         width: 100%;
+        border-bottom: 1px solid var(--color-border);
     }
     section {
-        --topbar-height: 40px;
-        --button-height: 40px;
-        --span-height: 30px;
-        /*height: calc(50% - (var(--topbar-height) + var(--button-height) + var(--span-height)));*/
+        --button-height: 48px;
+        --span-height: 40px;
         height: 100%;
         overflow-y: auto;
+        background-color: var(--color-bg-primary);
+        overflow-x: hidden;
     }
     span {
-        --span-height: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: large;
-        font-weight: 700;
+        --span-height: 40px;
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+        font-size: 14px;
+        font-weight: 600;
         height: var(--span-height);
-        background-color: #8f8f8f;
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-text-secondary);
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
     input {
-        height: 30px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
+        height: 40px;
+        padding: 0 var(--spacing-md);
         border: none;
-        color: whitesmoke;
-        background-color: #6f6f6f;
-        font-weight: 600;
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-secondary);
+        font-weight: 400;
+        font-size: 14px;
+        border-bottom: 1px solid var(--color-border);
     }
     input:focus {
         outline: none;
+        background-color: var(--color-bg-tertiary);
     }
     ::placeholder {
-        color: lightgray;
-        opacity: 1; /* Firefox */
+        color: var(--color-text-secondary);
+        opacity: 1;
     }
     button {
-        --button-height: 40px;
+        --button-height: 48px;
         border: none;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 50%;
         height: var(--button-height);
-        color: whitesmoke;
-        background-color: #4f4f4f;
-        font-size: larger;
-        font-weight: 700;
+        color: var(--color-text-secondary);
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        border-bottom: 2px solid transparent;
     }
     button:hover {
-        background-color: #6f6f6f;
-        cursor: pointer;
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-text-primary);
     }
     a {
-        --button-height: 40px;
+        --button-height: 48px;
         text-decoration: none;
         border: none;
         display: flex;
@@ -187,42 +254,71 @@
         justify-content: center;
         width: 50%;
         height: var(--button-height);
-        background-color: #4f4f4f;
-        font-size: larger;
-        font-weight: 700;
-        color: whitesmoke;
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        transition: all var(--transition-fast);
     }
     a:hover {
-        background-color: #6f6f6f;
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-text-primary);
         cursor: pointer;
     }
     h1 {
-        font-size: 22px;
-        margin: auto;
-        color: #010101;
+        font-size: 20px;
+        margin: 0;
+        color: var(--color-bg-primary);
+        font-family: var(--font-display);
+        border-bottom: 1px solid #eee;
+        padding-bottom: var(--spacing-sm);
     }
     .modal {
         display: flex;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
         display: flex;
+        align-items: center; /* Prevent stretching */
+        justify-content: center; /* Center horizontally */
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 100;
     }
     .modal-box {
-        --modal-box-height: 320px;
+        --modal-box-height: auto;
         --modal-box-width: 460px;
         position: relative;
-        top: calc(100vh - var(--modal-box-height) - var(--topbar-height) - 4*22px);
-        left: min(calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 60px), calc(60vw - var(--modal-box-width)/1.7));
+        /* top/left/transform removed as parent handles centering */
         width: var(--modal-box-width);
-        height: var(--modal-box-height);
-        padding: 20px;
-        background-color: whitesmoke;
-        color: #020202;
-        border-top-right-radius: 25px;
-        border: 2px solid #020202;
-        box-shadow: #010101 0px 10px 25px;
+        height: auto;
+        max-height: 80vh;
+        padding: var(--spacing-lg);
+        background-color: #ffffff;
+        color: var(--color-bg-primary);
+        border-radius: var(--radius-lg);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        overflow-y: auto;
+    }
+    .modal-box p {
+        margin: 0;
+        line-height: 1.4;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xs);
+    }
+    li {
+        font-size: 14px;
+        color: #444;
     }
 </style>

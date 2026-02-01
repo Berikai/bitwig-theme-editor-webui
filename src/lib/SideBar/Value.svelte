@@ -29,7 +29,7 @@
         <span class="info">{getThemeInfo()}</span>
     </section>
     <code style={`background-color: ${theme[selected][value]};`} hidden></code>
-    <i><ColorPicker value={value} selected={selected} /></i>
+    <i><ColorPicker {value} {selected} /></i>
 </div>
 
 <style>
@@ -38,37 +38,40 @@
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
-        min-height: 40px;
-        color: black;
-        background-color: whitesmoke;
-        border-bottom: 1px solid #a5a5a5;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        min-height: 48px;
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-secondary);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--spacing-sm) var(--spacing-md);
+        transition: background-color var(--transition-fast);
     }
     section {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
+        gap: 2px;
     }
     div:hover {
         cursor: pointer;
+        background-color: var(--color-bg-tertiary);
     }
     span {
-        margin-left: 10px;
-        margin-right: 10px;
+        font-size: 14px;
+        font-weight: 500;
     }
     span.info {
         font-size: 12px;
-        color: gray;
+        color: var(--color-text-secondary);
     }
     code {
         margin-right: 30px;
         width: 20px;
         height: 20px;
-        border: 1px solid black;
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
     }
     i {
-        margin-right: 20px;
+        margin-right: 10px;
     }
 </style>

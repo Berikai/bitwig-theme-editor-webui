@@ -12,12 +12,12 @@
     });
 
     const setDefault = () => {
-        ThemeStore.set(structuredClone(default_theme))
-    }
+        ThemeStore.set(structuredClone(default_theme));
+    };
 
     const changeTheme = () => {
         document.getElementById("theme").click();
-    }
+    };
 
     let files;
 
@@ -29,7 +29,12 @@
             for (const key in loaded_json) {
                 if (Object.prototype.hasOwnProperty.call(theme, key)) {
                     for (const in_key in loaded_json[key]) {
-                        if (Object.prototype.hasOwnProperty.call(theme[key], in_key)) {
+                        if (
+                            Object.prototype.hasOwnProperty.call(
+                                theme[key],
+                                in_key,
+                            )
+                        ) {
                             theme[key][in_key] = loaded_json[key][in_key];
                         }
                     }
@@ -43,9 +48,10 @@
     function downloadJSON() {
         const theme_lowercase = structuredClone(theme);
 
-        for(const key in theme_lowercase) {
+        for (const key in theme_lowercase) {
             for (const in_key in theme_lowercase[key]) {
-                theme_lowercase[key][in_key] = theme_lowercase[key][in_key].toLowerCase();
+                theme_lowercase[key][in_key] =
+                    theme_lowercase[key][in_key].toLowerCase();
             }
         }
 
@@ -67,26 +73,45 @@
     let modalState = false;
 </script>
 
-<nav>
+<nav class:modal-open={modalState}>
     <span>
         <button on:click={setDefault}><New />New</button>
-        <input bind:files id="theme" type="file" hidden/>
+        <input bind:files id="theme" type="file" hidden />
         <button on:click={changeTheme}><Load />Load</button>
         <button on:click={downloadJSON}><Save />Download</button>
     </span>
     <span>
-        <a id="main-title" target=”_blank” href="https://github.com/berikai/bitwig-theme-editor-webui" style="white-space: nowrap;">Bitwig Theme Editor WebUI</a>
+        <a
+            id="main-title"
+            target="”_blank”"
+            href="https://github.com/berikai/bitwig-theme-editor-webui"
+            style="white-space: nowrap;">Bitwig Theme Editor WebUI</a
+        >
     </span>
     <span id="how-to">
-        <button class="small-text" on:click={() => modalState = true}>How to apply themes to Bitwig Studio?</button>
+        <button class="small-text" on:click={() => (modalState = true)}
+            >How to apply themes to Bitwig Studio?</button
+        >
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="modal" style={modalState ? "display: flex;" : "display:none;"} on:click={() => modalState = false}>
+        <div
+            class="modal"
+            style={modalState ? "display: flex;" : "display:none;"}
+            on:click={() => (modalState = false)}
+        >
             <div class="modal-box">
                 <h1>How to apply themes to Bitwig Studio?</h1>
                 <p>You can use Bitwig Theme Editor to apply themes.</p>
-                <a target=”_blank” href="https://github.com/Berikai/bitwig-theme-editor">Go to Bitwig Theme Editor Repository</a>
-                <p class="note">Note: Please don't confuse it with <code>Bitwig Theme Editor WebUI</code>.</p>
+                <a
+                    target="”_blank”"
+                    href="https://github.com/Berikai/bitwig-theme-editor"
+                    >Go to Bitwig Theme Editor Repository</a
+                >
+                <p class="note">
+                    Note: Please don't confuse it with <code
+                        >Bitwig Theme Editor WebUI</code
+                    >.
+                </p>
             </div>
         </div>
     </span>
@@ -94,101 +119,154 @@
 
 <style>
     @media only screen and (max-width: 719px) {
-        #how-to { display: none; }
+        #how-to {
+            display: none;
+        }
     }
     @media only screen and (min-width: 720px) {
-        #how-to { display: flex; }
+        #how-to {
+            display: flex;
+        }
     }
     @media only screen and (max-width: 539px) {
-        #main-title { display: none; }
+        #main-title {
+            display: none;
+        }
     }
     @media only screen and (min-width: 540px) {
-        #main-title { display: flex; }
+        #main-title {
+            display: flex;
+        }
     }
     nav {
-        --topbar-height: 40px;
-
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         height: var(--topbar-height);
-        background-color: #2f2f2f;
+        background-color: var(--color-bg-secondary);
         z-index: 3;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid var(--color-border);
+        padding: 0 var(--spacing-md);
+    }
+    nav.modal-open {
+        z-index: 1000;
     }
     span {
         display: flex;
         flex-direction: row;
-        margin-left: 10px;
-        margin-right: 10px;
+        gap: var(--spacing-sm);
     }
     button {
         display: flex;
         flex-direction: row;
         align-items: center;
-        background-color: #2f2f2f;
-        border: none;
-        color: whitesmoke;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: var(--color-text-primary);
         text-decoration: none;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
-        margin: 4px 4px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--radius-md);
         cursor: pointer;
+        transition: all var(--transition-fast);
+        gap: var(--spacing-sm);
     }
     button:hover {
-        background-color: #4f4f4f;
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-accent);
     }
     a {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        background-color: #2f2f2f;
+        background-color: transparent;
         border: none;
-        color: whitesmoke;
+        color: var(--color-text-primary);
         text-decoration: none;
-        font-size: 16px;
-        font-weight: 600;
-        margin: 4px 4px;
-        padding: 4px;
+        font-size: 18px;
+        font-family: var(--font-display);
+        font-weight: 700;
+        padding: var(--spacing-sm);
         cursor: pointer;
-        overflow: hidden;
+        transition: color var(--transition-fast);
+    }
+    a:hover {
+        color: var(--color-accent);
     }
     h1 {
-        margin: auto;
-        color: #010101;
+        margin: 0;
+        color: var(--color-bg-primary);
+        font-family: var(--font-display);
+        font-size: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: var(--spacing-sm);
     }
     code {
         font-style: normal;
         font-size: medium;
         font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 2px 4px;
+        border-radius: 4px;
     }
     .note {
         font-style: italic;
         font-size: smaller;
+        color: #666;
     }
     .modal {
         display: flex;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
         display: flex;
+        /* Removed centering to allow manual positioning */
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 100;
     }
     .modal-box {
-        --topbar-height: 40px;
+        --topbar-height: 56px;
         --modal-box-width: 460px;
-        position: relative;
+        position: absolute; /* Changed back to absolute for manual placement */
         top: calc(var(--topbar-height) + 20px);
-        left: calc(100vw - var(--modal-box-width) - 60px);
+        right: 60px; /* Positioned to the right */
         width: var(--modal-box-width);
-        height: 160px;
-        padding: 20px;
-        background-color: whitesmoke;
-        color: #020202;
-        border-bottom-left-radius: 25px;
-        border: 2px solid #020202;
-        box-shadow: #010101 0px 10px 25px;
+        height: auto;
+        padding: var(--spacing-lg);
+        background-color: #ffffff;
+        color: var(--color-bg-primary);
+        border-radius: var(--radius-lg);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    .modal-box p {
+        margin: 0;
+        line-height: 1.4;
+    }
+    .modal-box a {
+        color: var(--color-accent);
+        font-size: 16px;
+        font-family: var(--font-primary);
+        justify-content: flex-start;
+        padding: 0;
+    }
+    .modal-box a:hover {
+        text-decoration: underline;
+    }
+    .small-text {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+    }
+    .small-text:hover {
+        color: var(--color-text-primary);
     }
 </style>

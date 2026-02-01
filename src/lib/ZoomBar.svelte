@@ -6,8 +6,7 @@
     scaling.subscribe((value) => {
         scale = value;
         const scaleEl = document.getElementById("scale");
-        if (scaleEl != undefined)
-            scaleEl.innerText = `${scale}%`;
+        if (scaleEl != undefined) scaleEl.innerText = `${scale}%`;
     });
 
     const increase = () => {
@@ -56,28 +55,33 @@
         display: flex;
         justify-content: space-between;
         position: absolute;
-        width: 75px;
+        width: 80px;
         top: 12px;
-        /*left: calc(max(var(--sidebar-width), var(--sidebar-min-width)) + 24px);*/
-        right: -99px;
-        height: 30px;
-        background-color: lightgray;
+        right: -104px;
+        height: 32px;
+        background-color: var(--color-bg-tertiary);
         z-index: 2;
-        border-radius: 5px;
-        box-shadow: #2c2c2c 0px 0px 15px;
-        background-color: #2f2f2f;
-        border-radius: 5px;
+        border-radius: var(--radius-md);
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
         overflow: hidden;
+        border: 1px solid var(--color-border);
     }
     button {
         border: none;
-        color: whitesmoke;
+        color: var(--color-text-primary);
         text-decoration: none;
-        width: 25px;
-        background-color: #2f2f2f;
+        width: 24px;
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: background-color var(--transition-fast);
     }
     button:hover {
-        background-color: #4f4f4f;
+        background-color: var(--color-accent);
+        color: var(--color-bg-primary);
     }
     i {
         display: flex;
@@ -86,6 +90,8 @@
         font-weight: 600;
         font-size: 12px;
         width: 100%;
-        background-color: #6f6f6f;
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--color-text-secondary);
+        cursor: default;
     }
 </style>
