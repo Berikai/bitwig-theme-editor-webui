@@ -1,18 +1,18 @@
-let previousElement = null;
+import { activeKey, default_theme } from "./Theme";
 
-export const scrollToValue = (e, value_id) => {
-    e.stopPropagation();
-    setTimeout(() => {
-        const element = document.getElementById(value_id);
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        // @ts-ignore
-        element.parentElement.parentElement.style.backgroundColor = 'var(--color-highlight-selection)';
-
-        if (previousElement !== null && previousElement !== element) {
-            // @ts-ignore
-            previousElement.parentElement.parentElement.style.backgroundColor = '';
+function findCategoryForKey(key) {
+    for (const category of Object.keys(default_theme)) {
+        if (Object.prototype.hasOwnProperty.call(default_theme[category], key)) {
+            return category;
         }
-
-        previousElement = element;
-    }, 0)
+    }
+    return "window";
 }
+
+export const scrollToValue = (e, value_id, category = null) => {
+    if (e && typeof e.stopPropagation === "function") {
+        e.stopPropagation();
+    }
+    const resolvedCategory = category || findCategoryForKey(value_id);
+    activeKey.set({ category: resolvedCategory, key: value_id });
+};

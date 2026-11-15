@@ -28,7 +28,7 @@
     const showReference = 0; // Development only, set to 0 in production
 
     onMount(() => {
-        bindValues();
+        return bindValues();
     });
 </script>
 

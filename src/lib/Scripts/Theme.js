@@ -1,8 +1,38 @@
-import { writable } from 'svelte/store';
+import { derived, get, writable } from 'svelte/store';
 
 export const default_theme = {
     "advanced": {
         "Timeline Playhead": "#000000ff"
+    },
+    "patched": {
+        "Note FX Chain 1": "#808080",
+        "Note FX Chain 2": "#406a80",
+        "Note FX Chain 3": "#40804a",
+        "Note FX Chain 4": "#808040",
+        "Note FX Chain 5": "#80404a",
+        "Note FX Chain 6": "#6a4080",
+        "Note FX Chain 7": "#406080",
+        "Note FX Chain 8": "#408055",
+        "Piano Roll Black Key": "#1a1a1a",
+        "Piano Roll White Key": "#b3b3b3",
+        "EQ Band 1": "#6a0f0f",
+        "EQ Band 2": "#a51818",
+        "EQ Band 3": "#e23b22",
+        "EQ Band 4": "#c9ff26",
+        "EQ Band 5": "#26ff84",
+        "EQ Band 6": "#a4c3ff",
+        "EQ Band 7": "#b7b7b7",
+        "EQ Band 8": "#808080",
+        "EQ Curve Line": "#ffffff",
+        "Sampler White Key (Active)": "#b3b3b3",
+        "Sampler White Key (Inactive)": "#808080",
+        "Sampler White Key (Pressed)": "#ccffcc",
+        "Sampler Black Key (Active)": "#1a1a1a",
+        "Sampler Black Key (Inactive)": "#4d4d4d",
+        "Sampler Black Key (Pressed)": "#8cb38c",
+        "Sampler Octave Text": "#1a1a1a",
+        "Dynamics Background": "#333333",
+        "Deactivated Overlay": "#26262680"
     },
     "window": {
         "Abstract Button Pressed Background": "#3b3b3b",
@@ -258,6 +288,172 @@ export const default_theme = {
     }
 }
 
-let current_theme = structuredClone(default_theme);
+const STORAGE_KEY = "bitwig-theme-editor-webui:session";
+const MAX_HISTORY = 50;
 
-export let ThemeStore = writable(current_theme);
+function loadSavedSession() {
+    if (typeof window === "undefined" || !window.localStorage) return null;
+    try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        return JSON.parse(raw);
+    } catch {
+        return null;
+    }
+}
+
+function mergeWithDefault(savedTheme) {
+    const base = structuredClone(default_theme);
+    if (!savedTheme || typeof savedTheme !== "object") return base;
+    for (const cat of Object.keys(base)) {
+        if (savedTheme[cat] && typeof savedTheme[cat] === "object") {
+            for (const key of Object.keys(base[cat])) {
+                if (typeof savedTheme[cat][key] === "string") {
+                    base[cat][key] = savedTheme[cat][key];
+                }
+            }
+        }
+    }
+    return base;
+}
+
+const savedSession = loadSavedSession();
+
+export const ThemeStore = writable(mergeWithDefault(savedSession?.theme));
+export const gradientEnabled = writable(
+    typeof savedSession?.gradientEnabled === "boolean" ? savedSession.gradientEnabled : true
+);
+export const targetVersion = writable(
+    savedSession?.targetVersion === "bw6" ? "bw6" : "bw5"
+);
+export const themeComments = writable(
+    savedSession?.comments && typeof savedSession.comments === "object" ? savedSession.comments : {}
+);
+export const themeFileName = writable(savedSession?.fileName || "theme.bte");
+
+// Active / hovered selection for preview <-> sidebar sync
+export const activeKey = writable(null); // { category, key } | null
+export const hoveredPreviewKey = writable(null); // { category, key, x, y } | null
+
+// Toast notifications
+export const toastMessage = writable(null);
+let toastTimer = null;
+export function showToast(text, type = "info", duration = 2800) {
+    if (toastTimer) clearTimeout(toastTimer);
+    toastMessage.set({ text, type });
+    toastTimer = setTimeout(() => {
+        toastMessage.set(null);
+    }, duration);
+}
+
+// Modified color counts (total and per category)
+export const modifiedCounts = derived(ThemeStore, ($theme) => {
+    const counts = { total: 0, window: 0, arranger: 0, advanced: 0, patched: 0 };
+    for (const cat of Object.keys(default_theme)) {
+        let catCount = 0;
+        for (const key of Object.keys(default_theme[cat])) {
+            const cur = ($theme[cat]?.[key] || "").toLowerCase();
+            const def = default_theme[cat][key].toLowerCase();
+            if (cur !== def) catCount++;
+        }
+        counts[cat] = catCount;
+        counts.total += catCount;
+    }
+    return counts;
+});
+
+// 50-step Undo / Redo history
+const undoStack = writable([]);
+const redoStack = writable([]);
+
+export const canUndo = derived(undoStack, ($s) => $s.length > 0);
+export const canRedo = derived(redoStack, ($s) => $s.length > 0);
+
+export function clearHistory() {
+    undoStack.set([]);
+    redoStack.set([]);
+}
+
+export function setColorValue(category, key, newValue, recordHistory = true) {
+    const normalized = newValue.toLowerCase();
+    ThemeStore.update(($theme) => {
+        const oldValue = ($theme[category]?.[key] || "").toLowerCase();
+        if (oldValue === normalized) return $theme;
+        if (recordHistory) {
+            undoStack.update((stack) => {
+                const next = [...stack, { category, key, oldValue, newValue: normalized }];
+                return next.length > MAX_HISTORY ? next.slice(next.length - MAX_HISTORY) : next;
+            });
+            redoStack.set([]);
+        }
+        return {
+            ...$theme,
+            [category]: {
+                ...$theme[category],
+                [key]: normalized,
+            },
+        };
+    });
+}
+
+export function resetColorValue(category, key) {
+    const def = default_theme[category]?.[key];
+    if (def) {
+        setColorValue(category, key, def, true);
+    }
+}
+
+export function resetAllColors() {
+    ThemeStore.set(structuredClone(default_theme));
+    gradientEnabled.set(true);
+    themeComments.set({});
+    themeFileName.set("theme.bte");
+    clearHistory();
+}
+
+export function undoColorChange() {
+    const stack = get(undoStack);
+    if (stack.length === 0) return;
+    const action = stack[stack.length - 1];
+    undoStack.set(stack.slice(0, -1));
+    redoStack.update((r) => [...r, action]);
+    setColorValue(action.category, action.key, action.oldValue, false);
+    activeKey.set({ category: action.category, key: action.key });
+}
+
+export function redoColorChange() {
+    const stack = get(redoStack);
+    if (stack.length === 0) return;
+    const action = stack[stack.length - 1];
+    redoStack.set(stack.slice(0, -1));
+    undoStack.update((u) => [...u, action]);
+    setColorValue(action.category, action.key, action.newValue, false);
+    activeKey.set({ category: action.category, key: action.key });
+}
+
+// Debounced localStorage persistence
+if (typeof window !== "undefined" && window.localStorage) {
+    let saveTimer = null;
+    const scheduleSave = () => {
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => {
+            try {
+                const payload = {
+                    theme: get(ThemeStore),
+                    gradientEnabled: get(gradientEnabled),
+                    targetVersion: get(targetVersion),
+                    comments: get(themeComments),
+                    fileName: get(themeFileName),
+                };
+                window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+            } catch {
+                // Ignore storage quota errors
+            }
+        }, 250);
+    };
+    ThemeStore.subscribe(scheduleSave);
+    gradientEnabled.subscribe(scheduleSave);
+    targetVersion.subscribe(scheduleSave);
+    themeComments.subscribe(scheduleSave);
+    themeFileName.subscribe(scheduleSave);
+}

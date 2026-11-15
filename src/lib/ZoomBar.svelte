@@ -1,63 +1,47 @@
 <script>
     import { scaling } from "./Scripts/Scaling";
 
-    let scale;
-
-    scaling.subscribe((value) => {
-        scale = value;
-        const scaleEl = document.getElementById("scale");
-        if (scaleEl != undefined) scaleEl.innerText = `${scale}%`;
-    });
-
     const increase = () => {
-        if (scale >= 300) {
-            scale = 300;
-            scaling.set(scale);
-            return;
-        }
-
-        if (scale < 100) {
-            scale += 10;
-            scaling.set(scale);
-            return;
-        }
-
-        scale += 25;
-        scaling.set(scale);
+        scaling.update((s) => {
+            if (s >= 300) return 300;
+            if (s < 100) return s + 10;
+            return s + 25;
+        });
     };
 
     const decrease = () => {
-        if (scale <= 50) {
-            scale = 50;
-            scaling.set(scale);
-            return;
-        }
-
-        if (scale <= 100) {
-            scale -= 10;
-            scaling.set(scale);
-            return;
-        }
-
-        scale -= 25;
-        scaling.set(scale);
+        scaling.update((s) => {
+            if (s <= 50) return 50;
+            if (s <= 100) return s - 10;
+            return s - 25;
+        });
     };
+
+    const resetZoom = () => scaling.set(100);
 </script>
 
-<div>
-    <button id="decrease" on:click={decrease}>-</button>
-    <i id="scale">{scale}%</i>
-    <button id="increase" on:click={increase}>+</button>
+<div class="zoom-bar">
+    <button type="button" id="decrease" aria-label="Zoom out" on:click={decrease}>-</button>
+    <button
+        type="button"
+        id="scale"
+        class="scale-readout"
+        title="Reset zoom to 100%"
+        on:click={resetZoom}
+    >
+        {$scaling}%
+    </button>
+    <button type="button" id="increase" aria-label="Zoom in" on:click={increase}>+</button>
 </div>
 
 <style>
-    div {
+    .zoom-bar {
         display: flex;
         justify-content: space-between;
         position: absolute;
-        width: 80px;
+        width: 96px;
         top: 12px;
-        right: -104px;
+        right: -112px;
         height: 32px;
         background-color: var(--color-bg-tertiary);
         z-index: 2;
@@ -70,7 +54,7 @@
         border: none;
         color: var(--color-text-primary);
         text-decoration: none;
-        width: 24px;
+        width: 26px;
         background-color: transparent;
         cursor: pointer;
         display: flex;
@@ -83,15 +67,16 @@
         background-color: var(--color-accent);
         color: var(--color-bg-primary);
     }
-    i {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .scale-readout {
         font-weight: 600;
-        font-size: 12px;
-        width: 100%;
+        font-size: 11px;
+        flex: 1;
+        width: auto;
         background-color: rgba(255, 255, 255, 0.05);
         color: var(--color-text-secondary);
-        cursor: default;
+    }
+    .scale-readout:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+        color: var(--color-text-primary);
     }
 </style>
